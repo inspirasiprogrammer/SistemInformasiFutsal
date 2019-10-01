@@ -37,3 +37,4 @@ Pelanggan =
 4. Informasi harga barang dan jasa
 
 aku ubah ya fahmi
+jangan kau ubah2 lah
