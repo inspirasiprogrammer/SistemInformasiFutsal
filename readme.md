@@ -15,13 +15,14 @@ Admin =
     
 Kasir =
 1. Login
-2. Pembayaran transaksi jasa dan barang
+2. Pembayaran transaksi penjualan jasa dan barang
 3. Membuat akun kustomer
 4. Update stock barang
     * Barang masuk
     * Kondisi perangkat yang disewa (dicuci/ rusak/ bagus)
     * Mengirim notifikasi email ke manajer bila ada stock barang yang kurang
-5. Update status sewa lapangan futsal
+5. Melakukan proses booking lapangan futsal
+6. Update status pembayaran dari booking lapangan futsal
 
 ## Mobile
 Manajer =
@@ -32,5 +33,5 @@ Manajer =
 Pelanggan =
 1. Login
 2. Booking lapangan futsal
-3. Status lapangan futsal
+3. Konfirmasi pembayaran
 4. Informasi harga barang dan jasa
