@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', "SifutController@home")->name("home");
+Route::get('login', "SifutController@login")->name("login");
