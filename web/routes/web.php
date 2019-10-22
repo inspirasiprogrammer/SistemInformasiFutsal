@@ -13,3 +13,6 @@
 
 Route::get('/', "SifutController@home")->name("home");
 Route::get('login', "SifutController@login")->name("login");
+
+Route::post('/login/simpan',"SifutController@simpanlogin")
+    ->name("simpan.login");
