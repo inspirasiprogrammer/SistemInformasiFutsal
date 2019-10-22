@@ -14,7 +14,7 @@
 </head>
 <body class="text-center">
     <div class="container">
-        <form action="simpan.login" method="POST">
+        <form action="{{ route('simpan.login') }}" method="POST">
             @csrf
             <div class="form-group">
                 <input type="text" style="width:30%; margin:auto; margin-bottom:10px;" class="form-control text-center" name="username" placeholder="Username">
