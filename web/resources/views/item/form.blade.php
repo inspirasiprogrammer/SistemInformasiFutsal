@@ -1,4 +1,4 @@
-@extends('admin.main')
+@extends('karyawan.main')
 
 @section('title','Form Kelas')
 
