@@ -4,10 +4,10 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header"><h4>Data Mata Kuliah</h4></div>
+    <div class="card-header"><h4>Data Akun</h4></div>
     <div class="card-body">
         <table class="table table-bordered table-striped">
-                <a href="" class="btn btn-success float-right mb-2">+</a>
+        <a href="{{route("akun.form")}}" class="btn btn-success float-right mb-2">+</a>
             <thead>
                 <tr>
                     <th>Nama</th>
@@ -19,23 +19,31 @@
             </thead>
             <tbody>
                 
-                @foreach ($data as $item)
                 <tr>
-                    <td>{{$item->nama}}</td>
-                    <td>{{$item->user}}</td>
-                    <td>{{$item->level}}</td>
-                    <td>{{$item->email}}</td>
+                    <td>Kasir</td>
+                    <td>Kasir</td>
+                    <td>Kasir</td>
+                    <td>Kasir</td>
                     <td>
                         <a href="" class="btn btn-warning btn-block">Ubah</a>
                     </td>
                 <td><a href="" class="btn btn-danger btn-block">Hapus</a></td>
-                </tr>    
-                @endforeach                
+                </tr>                 
+                <tr>
+                    <td>Admin</td>
+                    <td>Admin</td>
+                    <td>Admin</td>
+                    <td>Admin</td>
+                    <td>
+                        <a href="" class="btn btn-warning btn-block">Ubah</a>
+                    </td>
+                <td><a href="" class="btn btn-danger btn-block">Hapus</a></td>
+                </tr>                 
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="4">Jumlah Mata Kuliah</td>
-                    <td colspan="2">{{$data->count()}} Mata Kuliah</td>
+                    <td colspan="4">Jumlah Akun</td>
+                    <td colspan="2"> 2 Akun</td>
                 </tr>
             </tfoot>
         </table>
