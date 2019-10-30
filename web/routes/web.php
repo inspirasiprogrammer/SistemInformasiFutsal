@@ -19,6 +19,7 @@ Route::get('akun/form', "SifutController@formakun")->name("akun.form");
 Route::get('karyawan/dashboard', "SifutController@dashboard")->name("dashboard");
 Route::get('item/list', "KasirController@itemlist")->name("item.list");
 Route::get('item/form', "KasirController@itemform")->name("item.form");
+Route::get('transaksi/dashboard', "KasirController@itemform")->name("transaksi.dashboard");
 
 Route::get('customer/list', "CustomerController@customerlist")->name("customer.list");
 Route::get('customer/form', "CustomerController@customerform")->name("customer.form");
