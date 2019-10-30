@@ -13,10 +13,12 @@
                 <a class="nav-link" href="{{ route("item.list") }}">Item <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
+                <a class="nav-link" href="{{ route("customer.list") }}">Customer <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
                 <a class="nav-link" href="{{ route("home") }}">Logout <span class="sr-only">(current)</span></a>
             </li>
-            
         </ul>
-        
+       
     </div>
 </nav>

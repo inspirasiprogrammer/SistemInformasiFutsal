@@ -13,4 +13,5 @@ class KasirController extends Controller
     public function itemform(){
         return view("item.form");
     }
+    
 }
