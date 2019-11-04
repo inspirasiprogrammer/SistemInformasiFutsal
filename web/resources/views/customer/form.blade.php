@@ -1,6 +1,6 @@
 @extends('karyawan.main')
 
-@section('title','Form Item')
+@section('title','Form Customer')
 
 @section('content')
     <form action="" method="POST">
@@ -11,22 +11,21 @@
         
         </div>
         <div class="form-group">
-            <label for="stok">Stok</label>
-            <input type="text" class="form-control " name="stok" style="width:50%;" value="" maxlength="25">
+            <label for="username">Username</label>
+            <input type="text" class="form-control " name="username" style="width:50%;" value="" maxlength="25">
         
         </div>
         <div class="form-group">
-            <label for="jual">Jual</label>
-            <input type="text" class="form-control " name="jual" style="width:50%;" value="" maxlength="25">
+            <label for="email">Email</label>
+            <input type="text" class="form-control " name="email" style="width:50%;" value="" maxlength="25">
         
         </div>
+
         <div class="form-group">
-            <label for="beli">Beli</label>
-            <input type="text" class="form-control " name="beli" style="width:50%;" value="" maxlength="25">
+            <label for="telepon">Telepon</label>
+            <input type="text" class="form-control " name="telepon" style="width:50%;" value="" maxlength="15">
         
         </div>
-        
-        
         <input type="submit" class="btn btn-success" name="simpan" value="Simpan">
     </form>
     

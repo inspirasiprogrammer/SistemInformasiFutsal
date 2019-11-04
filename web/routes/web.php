@@ -22,6 +22,13 @@ Route::get('item/form', "KasirController@itemform")->name("item.form");
 Route::get('transaksi/dashboard', "KasirController@trandashboard")->name("transaksi.dashboard");
 Route::get('jual/list', "KasirController@juallist")->name("jual.list");
 Route::get('jual/form', "KasirController@jualform")->name("jual.form");
+Route::get('jual/bayar', "KasirController@jualbayar")->name("jual.bayar");
+
+Route::get('lapangan/list', "LapanganController@lapanganlist")->name("lapangan.list");
+Route::get('lapangan/form', "LapanganController@lapanganform")->name("lapangan.form");
+
+Route::get('customer/list', "CustomerController@customerlist")->name("customer.list");
+Route::get('customer/form', "CustomerController@customerform")->name("customer.form");
 
 Route::post('/login/simpan',"SifutController@simpanlogin")
     ->name("simpan.login");

@@ -7,11 +7,25 @@
     <div class="card-header"><h4>List Penjualan</h4></div>
     <div class="card-body">
         <table class="table table-bordered table-striped">
-                <div href="" class="float-left mb-2">12 November 2019</div>
-                <div href="" class="float-right mb-2">Panca</div>
-                <br>
-                <div href="" class="mb-2">01</div><br>
-                <div href="" class="mb-2">10.05</div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
+                <div class="float-left">12 November 2019</div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
+                <div class="float-left">Panca</div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
+                <div class="float-left">01</div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
+                <div class="float-left">10.05 Wib</div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
+            </div>
+        </div>
+            
             <thead>
                 <tr>
                     <th>Nama</th>
@@ -53,7 +67,7 @@
             </tfoot>
             
         </table>
-        <a href="" class="btn btn-success">Bayar</a>
+        <a href="{{route("jual.bayar")}}" class="btn btn-success">Bayar</a>
     </div>
 </div>
 @endsection

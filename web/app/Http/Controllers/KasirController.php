@@ -17,9 +17,12 @@ class KasirController extends Controller
         return view("transaksi.dashboard");
     }
     public function juallist(){
-        return view("transaksi.juallist");
+        return view("penjualan.list");
     }
     public function jualform(){
-        return view("transaksi.jualform");
+        return view("penjualan.detail");
+    }
+    public function jualbayar(){
+        return view("penjualan.bayar");
     }
 }
