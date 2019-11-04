@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/', "SifutController@home")->name("home");
-Route::get('login', "SifutController@login")->name("login");
+Route::get('/', function () {
+    return view('login');
+});
+
 Route::get('akun/list', "SifutController@listakun")->name("akun.list");
 Route::get('akun/form', "SifutController@formakun")->name("akun.form");
 
@@ -32,3 +34,20 @@ Route::get('customer/form', "CustomerController@customerform")->name("customer.f
 
 Route::post('/login/simpan',"SifutController@simpanlogin")
     ->name("simpan.login");
+
+Auth::routes();
+
+Route::middleware("auth")->group(function(){
+    Route::get('/home', function(){
+        return view('dashboard');
+    })->name("home");
+
+});
+
+Route::get("/register",function(){
+    return view('register');
+})->name("register")->middleware("guest");
+
+Route::get("/login",function(){
+    return view('login');
+})->name("login")->middleware("guest");

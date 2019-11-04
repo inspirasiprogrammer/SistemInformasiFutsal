@@ -1,27 +1,68 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Login</title>
+@extends('auth')
 
-    <style>
-   .container{
-     margin-top:150px;
-   }
-   </style>
-</head>
-<body class="text-center">
-    <div class="container">
-        <form action="{{ route('simpan.login') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <input type="text" style="width:30%; margin:auto; margin-bottom:10px;" class="form-control text-center" name="username" placeholder="Username">
-                <input type="text" style="width:30%; margin:auto;" class="form-control text-center" name="password" placeholder="Password">
-            </div>
-            <input type="submit" class="btn btn-success " name="simpan" value="Simpan">
-        </form>
+@section('title','Login')
+
+@section('content')
+<div class="login-box">
+    <div class="login-logo">
+        <a href="{{url("/")}}"><b>SI</b>stem <b>I</b>nformasi <b>FUT</b>sal</a>
     </div>
-</body>
-</html>
+    <!-- /.login-logo -->
+    <div class="card">
+        <div class="card-body login-card-body">
+        <p class="login-box-msg">Sign in to start your session</p>
+
+        <form action="{{ route('login') }}" method="post">
+            @csrf
+            <div class="input-group mb-3">
+            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Email">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+                </div>
+            </div>
+            @error('email')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+            </div>
+            
+            <div class="input-group mb-3">
+            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+                </div>
+            </div>
+            </div>
+           
+            <div class="row">
+            <div class="col-8">
+                <div class="icheck-primary">
+                <input type="checkbox" id="remember">
+                <label for="remember">
+                    Remember Me
+                </label>
+                </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-4">
+                <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+            </div>
+            <!-- /.col -->
+            </div>
+        </form>
+
+        <p class="mb-1">
+            <a href="#">I forgot my password</a>
+        </p>
+        <p class="mb-0">
+            <a href="{{ route("register") }}" class="text-center">Register a new membership</a>
+        </p>
+        </div>
+        <!-- /.login-card-body -->
+    </div>
+</div>
+<!-- /.login-box -->
+@endsection
