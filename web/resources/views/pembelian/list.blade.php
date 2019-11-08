@@ -50,7 +50,7 @@
 
     <tfoot>
         <tr>
-            <td colspan="2">Jumlah Pembelian</td>
+            <td colspan="5">Jumlah Pembelian</td>
             <td colspan="2"> Pembelian</td>
         </tr>
     </tfoot>

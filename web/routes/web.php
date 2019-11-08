@@ -44,8 +44,12 @@ Route::middleware("auth")->group(function(){
     Route::get('beli/list', "KasirController@belilist")->name("beli.list");
     Route::get('beli/form', "KasirController@beliform")->name("beli.form");
 
+    Route::get('item/list', "KasirController@itemlist")->name("item.list");
+    Route::get('item/form', "KasirController@itemform")->name("item.form");
+
     Route::get('customer/list', "CustomerController@customerlist")->name("customer.list");
     Route::get('customer/form', "CustomerController@customerform")->name("customer.form");
+
 });
 
 Route::get("/register",function(){
