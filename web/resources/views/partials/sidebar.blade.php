@@ -42,7 +42,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index2.html" class="nav-link">
+                            <a href="{{ route('beli.list') }}" class="nav-link">
                                 <i class="fas fa-coins nav-icon"></i>
                                 <p>Pembelian</p>
                             </a>
