@@ -25,4 +25,10 @@ class KasirController extends Controller
     public function jualbayar(){
         return view("penjualan.bayar");
     }
+    public function belilist(){
+        return view("pembelian.list");
+    }
+    public function beliform(){
+        return view("pembelian.form");
+    }
 }
