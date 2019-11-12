@@ -10,7 +10,7 @@
 
     <div class="card">
         <div class="card-body register-card-body">
-            <p class="login-box-msg">Register a new membership</p>
+            <p class="login-box-msg">Buat akun baru</p>
 
             <form action="{{ route('register') }}" method="post">
                 @csrf
@@ -34,6 +34,8 @@
                         class="form-control">
                         <option value="a">
                         Admin</option>
+                        <option value="m">
+                        Manajer</option>
                         <option value="k" >
                         Kasir</option>
                     </select>
@@ -74,7 +76,7 @@
                             <span class="fas fa-lock"></span>
                         </div>
                     </div>
-                </div>
+                </div> 
                 <div class="row">
                     <div class="col-8">
                         <div class="icheck-primary">
@@ -82,7 +84,7 @@
                             <label for="agreeTerms">
                                 I agree to the <a href="#">terms</a>
                             </label>
-                        </div>
+                        </div> 
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
@@ -92,7 +94,7 @@
                 </div>
             </form>
 
-            <a href="{{ route("login") }}" class="text-center">I already have a membership</a>
+           <a href="{{ route("login") }}" class="text-center">I already have a membership</a> 
         </div>
         <!-- /.form-box -->
     </div><!-- /.card -->

@@ -27,7 +27,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Jam</th>
+                <th>Tanggal</th>
                 <th>Kwitansi</th>
                 <th>Supplier</th>
                 <th>Total</th>
@@ -37,11 +37,21 @@
 
         <tbody>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>1</td>
+                    <td>20.12.19</td>
+                    <td>kw-nk-1211</td>
+                    <td>Naiki</td>
+                    <td>500.000</td>
+                               
+<td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
+<td><a href="" class="btn btn-danger btn-block">hapus</a></td>
+                </tr>                 
+                <tr>
+                    <td>2</td>
+                    <td>12.01.20</td>
+                    <td>or-ad-0238</td>
+                    <td>Adudi</td>
+                    <td>2.000.000</td>
                                
 <td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
 <td><a href="" class="btn btn-danger btn-block">hapus</a></td>

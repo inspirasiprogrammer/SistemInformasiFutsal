@@ -22,7 +22,7 @@
             <div class="card-header"><h4>List Penjualan</h4></div>
             <div class="card-body">
                 <table class="table table-bordered table-striped">
-                        
+                        <a href="{{route('jual.form')}}" class="btn btn-success float-right mb-2">+</a>
                     <thead>
                         <tr>
                             <th>Id</th>

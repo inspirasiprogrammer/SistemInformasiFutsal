@@ -6,8 +6,17 @@
     </button>
     <div class="collapse navbar-collapse navbar-right" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ route("home") }}">Logout <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                    <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();" class="nav-link"><i class="fas fa-power-off"></i></a>
+                    
+        
+                <form id="logout-form" action="{{ route('logout') }}"
+                        method="POST" style="display: none;">
+                    @csrf
+                </form>
+                    
             </li>
             
         </ul>

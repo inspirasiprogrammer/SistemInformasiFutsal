@@ -1,5 +1,7 @@
 <?php
 
+use App\Sifut;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,32 +17,23 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('akun/list', "SifutController@listakun")->name("akun.list");
-Route::get('akun/form', "SifutController@formakun")->name("akun.form");
-
-Route::get('karyawan/dashboard', "SifutController@dashboard")->name("dashboard");
-Route::get('item/list', "KasirController@itemlist")->name("item.list");
-Route::get('item/form', "KasirController@itemform")->name("item.form");
-
-
-
-Route::post('/login/simpan',"SifutController@simpanlogin")
-    ->name("simpan.login");
 
 Auth::routes();
 
 Route::middleware("auth")->group(function(){
     Route::get('/home', function(){
         if (Auth::user()->level=='a'){
-            return view('admin.list');
+            $data = Sifut::paginate(10);
+            return view("admin.list",compact("data"));
         }else{
             return view('dashboard');
         }
         
     })->name("home");
-    Route::get('/admin', function(){
-        return view('admin.list');
-    })->name("admin");
+
+    Route::get('/admin/form', function(){
+        return view('admin.form');
+    })->name("admin.form");
 
     Route::get('lapangan/list', "LapanganController@lapanganlist")->name("lapangan.list");
     Route::get('lapangan/form', "LapanganController@lapanganform")->name("lapangan.form");
