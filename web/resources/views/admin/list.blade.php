@@ -7,7 +7,7 @@
     <div class="card-header"><h4>Data Akun</h4></div>
     <div class="card-body">
         <table class="table table-bordered table-striped">
-        <a href="{{route("akun.form")}}" class="btn btn-success float-right mb-2">+</a>
+        <a href="" class="btn btn-success float-right mb-2">+</a>
             <thead>
                 <tr>
                     <th>Nama</th>

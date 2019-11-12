@@ -31,8 +31,16 @@ Auth::routes();
 
 Route::middleware("auth")->group(function(){
     Route::get('/home', function(){
-        return view('dashboard');
+        if (Auth::user()->level=='a'){
+            return view('admin.list');
+        }else{
+            return view('dashboard');
+        }
+        
     })->name("home");
+    Route::get('/admin', function(){
+        return view('admin.list');
+    })->name("admin");
 
     Route::get('lapangan/list', "LapanganController@lapanganlist")->name("lapangan.list");
     Route::get('lapangan/form', "LapanganController@lapanganform")->name("lapangan.form");
