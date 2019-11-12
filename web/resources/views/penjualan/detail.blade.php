@@ -43,9 +43,10 @@
                     
                     <thead>
                         <tr>
+                            <th style="width:10%;">Id</th>
                             <th>Nama</th>
                             <th>Harga</th>
-                            <th>@</th>
+                            <th style="width:7%;">@</th>
                             <th>Diskon</th>
                             <th>Jumlah</th>
                             <th>Hapus</th>
@@ -53,6 +54,7 @@
                     </thead>
                     <tbody>
                         <tr>
+                            <td>1</td>
                             <td>Lapangan A</td>
                             <td>120.000</td>
                             <td>1</td>
@@ -61,11 +63,46 @@
                         <td><a href="" class="btn btn-danger btn-block">X</a></td>
                         </tr>                  
                         <tr>
+                            <td>23</td>
                             <td>Gatorite</td>
                             <td>10.000</td>
                             <td>12</td>
                             <td>0.00</td>
                             <td>120.000</td>
+                        <td><a href="" class="btn btn-danger btn-block">X</a></td>
+                        </tr>                  
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <select class="select2" multiple="multiple" data-placeholder="Id Barang" style="width: 100%;">
+                                      <option>1</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                      <option>6</option>
+                                      <option>7</option>
+                                    </select>
+                                  </div></td>
+                            <td>
+                                <div class="form-group">
+                                    <select class="select2" multiple="multiple" data-placeholder="Nama Barang" style="width: 100%;">
+                                        <option>Celana</option>
+                                        <option>Gatorite</option>
+                                        <option>Lapangan A</option>
+                                        <option>Lapangan B</option>
+                                        <option>Sepatu</option>
+                                        <option>Seragam</option>
+                                        <option>Pokari Set</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td></td>
+                            <td><div class="form-group">
+                                    <input type="number">
+                                </div></td>
+                            <td></td>
+                            <td></td>
                         <td><a href="" class="btn btn-danger btn-block">X</a></td>
                         </tr>                  
                                         
