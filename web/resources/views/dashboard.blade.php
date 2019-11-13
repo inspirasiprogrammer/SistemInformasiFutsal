@@ -15,7 +15,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route("home") }}">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard v1</li>
+                        <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -34,12 +34,12 @@
                         <div class="inner">
                             <h3>150</h3>
 
-                            <p>New Orders</p>
+                            <p>Penjualan</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i
+                        <a href="{{route('jual.form')}}" class="small-box-footer">Masuk <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -50,12 +50,12 @@
                         <div class="inner">
                             <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-                            <p>Bounce Rate</p>
+                            <p>Pembelian</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="fas fa-shopping-cart"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i
+                        <a href="{{route('beli.form')}}" class="small-box-footer">Masuk <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -66,12 +66,12 @@
                         <div class="inner">
                             <h3>44</h3>
 
-                            <p>User Registrations</p>
+                            <p>Customer</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i
+                        <a href="{{route('customer.form')}}" class="small-box-footer">Masuk<i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -82,12 +82,12 @@
                         <div class="inner">
                             <h3>65</h3>
 
-                            <p>Unique Visitors</p>
+                            <p>Item</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
+                            <i class="ion ion-cube"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i
+                        <a href="{{route('item.form')}}" class="small-box-footer">Masuk <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -123,77 +123,77 @@
                                     <tbody>
                                         <tr>
                                             <td>08.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-success btn-block">Booked</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-success btn-block">Booked</a></td>
                                             <td>Deni</td>
                                         </tr>                                    
                                         <tr>
                                             <td>09.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>10.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>11.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>12.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>13.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>14.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>15.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>16.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>17.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>18.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>19.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>20.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>21.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>22.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                     </tbody>
@@ -221,77 +221,77 @@
                                     <tbody>
                                         <tr>
                                             <td>08.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-warning btn-block">Pending</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-warning btn-block">Pending</a></td>
                                             <td>Deni</td>
                                         </tr>                                    
                                         <tr>
                                             <td>09.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>10.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>11.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>12.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>13.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>14.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>15.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>16.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>17.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>18.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>19.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>20.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>21.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>22.00</td>
-                                            <td><a href="{{route("lapangan.form")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                     </tbody>

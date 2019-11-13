@@ -13,4 +13,7 @@ class LapanganController extends Controller
     public function lapanganform(){
         return view("lapangan.form");
     }
+    public function sewa(){
+        return view("sewa.form");
+    }
 }

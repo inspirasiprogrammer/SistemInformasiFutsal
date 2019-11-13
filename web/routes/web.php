@@ -37,6 +37,7 @@ Route::middleware("auth")->group(function(){
 
     Route::get('lapangan/list', "LapanganController@lapanganlist")->name("lapangan.list");
     Route::get('lapangan/form', "LapanganController@lapanganform")->name("lapangan.form");
+    Route::get('sewa', "LapanganController@sewa")->name("sewa");
 
     Route::get('jual/list', "KasirController@juallist")->name("jual.list");
     Route::get('jual/form', "KasirController@jualform")->name("jual.form");
