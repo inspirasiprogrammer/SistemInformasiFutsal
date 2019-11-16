@@ -44,6 +44,17 @@
                                     </select>
                                 </div>
                             <div class="form-group">
+                                <label for="satuan">Satuan</label>
+                                <input type="text" class="form-control " name="satuan" style="width:50%;" value="" maxlength="25">
+                                        
+                            </div>
+
+                            <div class="form-group">
+                                <label for="stok">Stok</label>
+                                <input type="text" class="form-control " name="stok" style="width:50%;" value="" maxlength="25">
+                                
+                            </div>
+                            <div class="form-group">
                                 <label for="jual">Jual</label>
                                 <input type="text" class="form-control " name="jual" style="width:50%;" value="" maxlength="25">
                             

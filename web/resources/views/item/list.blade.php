@@ -30,6 +30,7 @@
                                 <th>Nama</th>
                                 <th>Stok</th>
                                 <th>Jenis</th>
+                                <th>Satuan</th>
                                 <th>Jual</th>
                                 <th>Beli</th>
                                 <th colspan="2" width=25%>Action</th>
@@ -63,7 +64,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="6">Jumlah Item</td>
+                                <td colspan="7">Jumlah Item</td>
                                 <td colspan="2">2 Item</td>
                             </tr>
                         </tfoot>
