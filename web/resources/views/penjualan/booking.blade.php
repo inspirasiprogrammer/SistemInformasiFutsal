@@ -63,18 +63,7 @@
                         <td><a href="" class="btn btn-danger btn-block">X</a></td>
                         </tr>                
                         <tr>
-                            <td>
-                                <div class="form-group">
-                                    <select class="select2" multiple="multiple" data-placeholder="Id Barang" style="width: 100%;">
-                                      <option>1</option>
-                                      <option>2</option>
-                                      <option>3</option>
-                                      <option>4</option>
-                                      <option>5</option>
-                                      <option>6</option>
-                                      <option>7</option>
-                                    </select>
-                                  </div></td>
+                            <td></td>
                             <td>
                                 <div class="form-group">
                                     <select class="select2" multiple="multiple" data-placeholder="Nama Barang" style="width: 100%;">

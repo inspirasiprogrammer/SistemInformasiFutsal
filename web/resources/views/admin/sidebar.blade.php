@@ -36,13 +36,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('jual.list') }}" class="nav-link">
+                            <a href="{{ route('admin.jual.list') }}" class="nav-link">
                                 <i class="fas fa-cash-register nav-icon"></i>
                                 <p>Penjualan</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('beli.list') }}" class="nav-link">
+                            <a href="{{ route('admin.beli.list') }}" class="nav-link">
                                 <i class="fas fa-coins nav-icon"></i>
                                 <p>Pembelian</p>
                             </a>
@@ -50,21 +50,37 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('customer.list') }}" class="nav-link">
+                    <a href="{{ route('admin.list') }}" class="nav-link">
                         <i class="nav-icon fas fa-user-circle"></i>
                         <p>
-                            Customer
+                            Akun
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('item.list') }}" class="nav-link">
+                    <a href="{{ route('admin.item.list') }}" class="nav-link">
                         <i class="nav-icon fas fa-clipboard-list"></i>
                         <p>
                             Item
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.jenis.list') }}" class="nav-link">
+                        <i class="nav-icon fas fa-futbol"></i>
+                        <p>
+                            Jenis
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                        <a href="{{ route('laporan.tahunan') }}" class="nav-link">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>
+                                Laporan
+                            </p>
+                        </a>
+                    </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

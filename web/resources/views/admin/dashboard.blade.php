@@ -1,4 +1,4 @@
-@extends('main')
+@extends('admin.main')
 
 @section('title','Dashboard')
 
@@ -39,7 +39,7 @@
                         <div class="icon">
                             <i class="ion ion-bag"></i>
                         </div>
-                        <a href="{{route('jual.form')}}" class="small-box-footer">Masuk <i
+                        <a href="{{route('admin.jual.form')}}" class="small-box-footer">Masuk <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                         <div class="icon">
                             <i class="fas fa-shopping-cart"></i>
                         </div>
-                        <a href="{{route('beli.form')}}" class="small-box-footer">Masuk <i
+                        <a href="{{route('admin.beli.form')}}" class="small-box-footer">Masuk <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -66,12 +66,12 @@
                         <div class="inner">
                             <h3>44</h3>
 
-                            <p>Customer</p>
+                            <p>Akun</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="{{route('customer.form')}}" class="small-box-footer">Masuk<i
+                        <a href="{{route('admin.form')}}" class="small-box-footer">Masuk<i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                         <div class="icon">
                             <i class="ion ion-cube"></i>
                         </div>
-                        <a href="{{route('item.form')}}" class="small-box-footer">Masuk <i
+                        <a href="{{route('admin.item.form')}}" class="small-box-footer">Masuk <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -123,77 +123,77 @@
                                     <tbody>
                                         <tr>
                                             <td>08.00</td>
-                                            <td><a href="{{route("contoh")}}" class="btn btn-success btn-block">Booked</a></td>
+                                            <td><a href="{{route("admin.contoh")}}" class="btn btn-success btn-block">Booked</a></td>
                                             <td>Deni</td>
                                         </tr>                                    
                                         <tr>
                                             <td>09.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>10.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>11.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>12.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>13.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>14.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>15.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>16.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>17.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>18.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>19.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>20.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>21.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>22.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                     </tbody>
@@ -221,77 +221,77 @@
                                     <tbody>
                                         <tr>
                                             <td>08.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-warning btn-block">Pending</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-warning btn-block">Pending</a></td>
                                             <td>Deni</td>
                                         </tr>                                    
                                         <tr>
                                             <td>09.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>10.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>11.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>12.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>13.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>14.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>15.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>16.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>17.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>18.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>19.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>20.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>21.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                         <tr>
                                             <td>22.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
+                                            <td><a href="{{route("admin.lapangan.sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
                                             <td></td>
                                         </tr>                                    
                                     </tbody>
