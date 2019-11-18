@@ -44,6 +44,7 @@
                                 <td>Gatorite</td>
                                 <td>30</td>
                                 <td>Minuman</td>
+                                <td>Botol</td>
                                 <td>10.000</td>
                                 <td>5.000</td>
                                
@@ -55,6 +56,7 @@
                                 <td>Kacang Utom</td>
                                 <td>20</td>
                                 <td>Makanan</td>
+                                <td>Botol</td>
                                 <td>10.000</td>
                                 <td>5.000</td>
                                
