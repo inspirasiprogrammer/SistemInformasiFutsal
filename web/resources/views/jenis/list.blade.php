@@ -23,16 +23,12 @@
                 <div class="card-header"><h4>list Item</h4></div>
                 <div class="card-body">
                     <table class="table table-bordered table-striped">
-                            <a href="{{route('item.form')}}" class="btn btn-success float-right mb-2">+</a>
+                            <a href="{{route('jenis.form')}}" class="btn btn-success float-right mb-2">+</a>
                         <thead>
                             <tr>
-                                <th>Id</th>
+                                <th>No</th>
                                 <th>Nama</th>
                                 <th>Stok</th>
-                                <th>Jenis</th>
-                                <th>Satuan</th>
-                                <th>Jual</th>
-                                <th>Beli</th>
                                 <th colspan="2" width=25%>Action</th>
                             </tr>
                         </thead>
@@ -41,48 +37,32 @@
                             
                             <tr>
                                 <td>01</td>
-                                <td>Gatorite</td>
-                                <td>30</td>
                                 <td>Minuman</td>
-                                <td>Botol</td>
-                                <td>10.000</td>
-                                <td>5.000</td>
+                                <td>30</td>
                                
                             <td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
                             <td><a href="" class="btn btn-danger btn-block">hapus</a></td>
                             </tr>                  
                             <tr>
                                 <td>02</td>
-                                <td>Kacang Utom</td>
-                                <td>20</td>
                                 <td>Makanan</td>
-                                <td>Botol</td>
-                                <td>10.000</td>
-                                <td>5.000</td>
-                               
+                                <td>20</td>
+                                
                             <td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
                             <td><a href="" class="btn btn-danger btn-block">hapus</a></td>
                             </tr>                  
                             <tr>
                                 <td>03</td>
-                                <td>Lapangan A</td>
-                                <td>1</td>
                                 <td>Lapangan Vinyl</td>
-                                <td>Lapangan</td>
-                                <td>150.000</td>
-                                <td>0</td>
+                                <td>1</td>
                                
                             <td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
                             <td><a href="" class="btn btn-danger btn-block">hapus</a></td>
                             </tr>                  
                             <tr>
                                 <td>04</td>
-                                <td>Lapangan B</td>
-                                <td>1</td>
                                 <td>Lapangan Sintetis</td>
-                                <td>Lapangan</td>
-                                <td>125.000</td>
-                                <td>0</td>
+                                <td>1</td>
                                
                             <td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
                             <td><a href="" class="btn btn-danger btn-block">hapus</a></td>
@@ -90,8 +70,8 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="7">Jumlah Item</td>
-                                <td colspan="2">2 Item</td>
+                                <td colspan="3">Jumlah</td>
+                                <td colspan="2">4 Jenis</td>
                             </tr>
                         </tfoot>
                     </table>

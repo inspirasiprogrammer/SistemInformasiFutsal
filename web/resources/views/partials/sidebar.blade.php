@@ -73,6 +73,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('jenis.list') }}" class="nav-link">
+                        <i class="nav-icon fas fa-futbol"></i>
+                        <p>
+                            Jenis
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

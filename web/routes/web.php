@@ -31,10 +31,18 @@ Route::middleware("auth")->group(function(){
         
     })->name("home");
 
+    
     Route::get('/admin/form', function(){
         return view('admin.form');
-    })->name("admin.form");
+    })->name("admin.form")
+    ;
+    Route::get('/jenis/form', function(){
+        return view('jenis.form');
+    })->name("jenis.form");
 
+    Route::get('/jenis/list', function(){
+        return view('jenis.list');
+    })->name("jenis.list");
     Route::get('lapangan/list', "LapanganController@lapanganlist")->name("lapangan.list");
     Route::get('lapangan/form', "LapanganController@lapanganform")->name("lapangan.form");
     Route::get('sewa', "LapanganController@sewa")->name("sewa");
