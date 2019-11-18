@@ -20,7 +20,7 @@
     <section class="content">
         <div class="card">
             <div class="card-header bg-primary text-white">
-                <h3 class="card-title">Sewa Lapangan</h3>
+                <h3 class="card-title">Booking Lapangan A</h3>
             </div>
             <div class="card-body">
                 <form action="" method="POST">
@@ -67,7 +67,9 @@
                         </select>
                     </div>
             
-                    <input type="submit" class="btn btn-success" name="simpan" value="Simpan">
+                    <div class="form-group float-left">
+                        <a href="{{ route("booking") }}" class="btn btn-success"><i class="fa fa-save"></i> Simpan</a>
+                    </div>
                 </form>
             </div>
         </div>

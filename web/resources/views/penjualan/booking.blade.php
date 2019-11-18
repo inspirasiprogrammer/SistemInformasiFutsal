@@ -54,23 +54,14 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Lapangan A</td>
-                            <td>120.000</td>
+                            <td>45</td>
+                            <td>Booking Lapangan A</td>
+                            <td>30.000</td>
                             <td>1</td>
                             <td>0.00</td>
-                            <td>120.000</td>
+                            <td>30.000</td>
                         <td><a href="" class="btn btn-danger btn-block">X</a></td>
-                        </tr>                  
-                        <tr>
-                            <td>23</td>
-                            <td>Gatorite</td>
-                            <td>10.000</td>
-                            <td>12</td>
-                            <td>0.00</td>
-                            <td>120.000</td>
-                        <td><a href="" class="btn btn-danger btn-block">X</a></td>
-                        </tr>                  
+                        </tr>                
                         <tr>
                             <td>
                                 <div class="form-group">

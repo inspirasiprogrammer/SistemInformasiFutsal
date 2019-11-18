@@ -34,6 +34,12 @@ Route::middleware("auth")->group(function(){
     Route::get('/admin/form', function(){
         return view('admin.form');
     })->name("admin.form");
+    Route::get('/contoh', function(){
+        return view('penjualan.contoh');
+    })->name("contoh");
+    Route::get('/booking', function(){
+        return view('penjualan.booking');
+    })->name("booking");
 
     Route::get('lapangan/list', "LapanganController@lapanganlist")->name("lapangan.list");
     Route::get('lapangan/form', "LapanganController@lapanganform")->name("lapangan.form");

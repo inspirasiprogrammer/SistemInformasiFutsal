@@ -103,7 +103,7 @@
                                 </div></td>
                             <td></td>
                             <td></td>
-                        <td><a href="" class="btn btn-danger btn-block">X</a></td>
+                        <td><a href="" class="btn btn-danger btn-block">+</a></td>
                         </tr>                  
                                         
                     </tbody>
