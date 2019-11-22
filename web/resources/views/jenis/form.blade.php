@@ -24,8 +24,11 @@
                         <h3 class="card-title">Form Jenis</h3>
                     </div>
                <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="{{isset($data)?route("jenis.update",[$data->id]):route("jenis.store")}}" method="POST" autocomplete="off">
                             @csrf
+                            @if (isset($data))
+                            @method("PUT")
+                        @endif
                             <div class="form-group">
                                 <label for="nama">Nama</label>
                                 <input type="text" class="form-control " name="nama" style="width:50%;" value="" maxlength="25">

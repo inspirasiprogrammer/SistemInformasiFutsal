@@ -66,7 +66,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('jenis.list') }}" class="nav-link">
+                    <a href="{{ route('jenis.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-futbol"></i>
                         <p>
                             Jenis

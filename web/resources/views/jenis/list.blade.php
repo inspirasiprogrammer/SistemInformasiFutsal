@@ -33,40 +33,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
-                            
-                            <tr>
-                                <td>01</td>
-                                <td>Minuman</td>
-                                <td>30</td>
-                               
-                            <td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
-                            <td><a href="" class="btn btn-danger btn-block">hapus</a></td>
-                            </tr>                  
-                            <tr>
-                                <td>02</td>
-                                <td>Makanan</td>
-                                <td>20</td>
-                                
-                            <td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
-                            <td><a href="" class="btn btn-danger btn-block">hapus</a></td>
-                            </tr>                  
-                            <tr>
-                                <td>03</td>
-                                <td>Lapangan Vinyl</td>
-                                <td>1</td>
-                               
-                            <td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
-                            <td><a href="" class="btn btn-danger btn-block">hapus</a></td>
-                            </tr>                  
-                            <tr>
-                                <td>04</td>
-                                <td>Lapangan Sintetis</td>
-                                <td>1</td>
-                               
-                            <td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
-                            <td><a href="" class="btn btn-danger btn-block">hapus</a></td>
-                            </tr>                  
+                            @foreach ($data as $item)
+                    <tr>
+                        <td>{{ $loop->iteration + (10*($data->currentPage()-1 )) }}</td>                    
+                        <td>{{$item->nama}}</td>
+                        <td>0</td>
+                        <td><a href="{{route('jenis.show',[$item->id])}}" class="btn btn-warning btn-block"><i class="fa fa-pencil-alt"></i>Ubah</a></td>
+
+                        <td>
+                        <form action="{{route("jenis.destroy",[$item->id])}}" method="POST">
+                                               
+                        @method("DELETE")
+                            @csrf
+                        <button type="submit" class="btn btn-danger btn-block">
+                            <i class="fa fa-trash"></i> Hapus
+                        </button>
+                        </form>
+                        </td>
+                    </tr>
+                        @endforeach
+                          
+                         
                         </tbody>
                         <tfoot>
                             <tr>

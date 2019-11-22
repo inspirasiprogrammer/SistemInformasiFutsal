@@ -63,6 +63,7 @@ Route::middleware("auth")->group(function(){
     Route::get('/admin/jenis/list', function(){
         return view('admin.jenis.list');
     })->name("admin.jenis.list");
+    Route::resource('jenis','jeniscontroller');
 
     Route::get('lapangan/list', "LapanganController@lapanganlist")->name("lapangan.list");
     Route::get('lapangan/form', "LapanganController@lapanganform")->name("lapangan.form");
