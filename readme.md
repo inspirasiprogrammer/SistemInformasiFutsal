@@ -2,6 +2,9 @@
 
 Sistem Informasi Reservasi dan Laporan Pendapatan Jasa Futsal yang kami buat ini dibuat sebagai syarat kelulusuan mata kuliah Project STMIK IBBI Medan
 
+## ERD 
+![ERD SIFut](erd-sifut.png)
+
 ## User
 1. Admin
 2. Kasir
