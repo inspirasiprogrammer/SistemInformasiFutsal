@@ -24,15 +24,15 @@
                 
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <label for="total">Total</label>
-                    <input type="text" class="form-control " name="total" style="width:50%; pointer-events: none;" value="220000">
+                    <input type="number" class="form-control " name="total" id="total" style="width:50%; pointer-events: none;" value="220000">
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
                     <label for="kembalian">Kembalian</label>
-                    <input type="text" class="form-control " name="kembalian" style="width:50%; pointer-events: none;" value="30000">
+                    <input type="number" class="form-control " name="kembalian" id="kembalian" style="width:50%; pointer-events: none;" value="30000">
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12"  style="margin-bottom:50px;">
                     <label for="bayar">Bayar</label>
-                    <input type="text" class="form-control " name="bayar" style="width:50%; pointer-events: none;" value="250000">
+                    <input type="text" class="form-control " name="bayar" id="bayar" style="width:50%;" >
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12"  style="margin-bottom:50px;">
                     
@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-md-3" style="margin-bottom:20px;">
                     <div class="card box-shadow">
-                        <a href="" class="btn btn-primary btn-block">5000</a>
+                        <a href="" class="btn btn-primary btn-block" onclick="testing()">5000</a>
                     </div>          
                 </div>
                 <div class="col-md-3" style="margin-bottom:20px;">
@@ -94,4 +94,10 @@
     </section>
 </div>
     
+@endsection
+@section('script')
+ <script>
+ function testing() {
+        document.getElementById("bayar").innerHTML='5000';
+      }</script>
 @endsection

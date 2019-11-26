@@ -91,6 +91,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset("dist/js/demo.js") }}"></script>
     <script>
+            
             $(function () {
               //Initialize Select2 Elements
               $('.select2').select2()
@@ -159,6 +160,7 @@
           
             })
           </script>
+          @yield('script')
 </body>
 
 </html>
