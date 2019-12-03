@@ -37,6 +37,9 @@ class JenisController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            "nama" => 'required|max:50'
+            ]);
         jenis::create($request->except("_token"));
 
         $request->session()->flash("info","Berhasil Tambah Data Jenis");
@@ -81,6 +84,10 @@ class JenisController extends Controller
 
     $request->session()->flash("info","Berhasil Ubah Data Jenis");
     return redirect()->route("jenis.index");
+
+    $request->validate([
+        "nama" => 'required|max:50'
+        ]);
     }
 
     /**

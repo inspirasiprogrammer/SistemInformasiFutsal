@@ -29,11 +29,15 @@
                             @if (isset($data))
                             @method("PUT")
                         @endif
-                            <div class="form-group">
-                                <label for="nama">Nama</label>
-                                <input type="text" class="form-control " name="nama" style="width:50%;" value="" maxlength="25">
-                            
+                        <div class="form-group">
+                            <label for="nama">Nama</label>
+                            <input type="text" class="form-control @error("nama") is-invalid @enderror" name="nama" maxlength="25" value="{{old("nama",isset($data)?$data->nama:"")}}">
+                        @error("nama")
+                            <div class="invalid-feedback">
+                                {{$message}}
                             </div>
+                        @enderror
+                        </div>
                             
                             <input type="submit" class="btn btn-success" name="simpan" value="Simpan">
                             </form>

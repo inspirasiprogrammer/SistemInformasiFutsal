@@ -50,19 +50,6 @@ Route::middleware("auth")->group(function(){
     Route::get('/admin/booking', function(){
         return view('admin.penjualan.booking');
     })->name("admin.booking");
-    Route::get('/jenis/form', function(){
-        return view('jenis.form');
-    })->name("jenis.form");
-    Route::get('/admin/jenis/form', function(){
-        return view('admin.jenis.form');
-    })->name("admin.jenis.form");
-
-    Route::get('/jenis/list', function(){
-        return view('jenis.list');
-    })->name("jenis.list");
-    Route::get('/admin/jenis/list', function(){
-        return view('admin.jenis.list');
-    })->name("admin.jenis.list");
     Route::resource('jenis','jeniscontroller');
 
     Route::get('lapangan/list', "LapanganController@lapanganlist")->name("lapangan.list");
@@ -97,8 +84,7 @@ Route::middleware("auth")->group(function(){
         return view('admin.pembelian.form');
     })->name("admin.beli.form");
 
-    Route::get('item/list', "KasirController@itemlist")->name("item.list");
-    Route::get('item/form', "KasirController@itemform")->name("item.form");
+    Route::resource('item','ItemController');
 
     Route::get('/admin/item/list', function(){
         return view('admin.item.list');
