@@ -78,9 +78,9 @@
     </div>
     <div class="form-group">
         <label for="jual">Jual</label>
-        <input type="satuan"
+        <input type="text"
             class="form-control @error("jual") is-invalid @enderror"
-            name="satuan" value='{{ isset($data)?$data->satuan:old("jual") }}'>
+            name="jual" value='{{ isset($data)?$data->satuan:old("jual") }}'>
         @error("jual")
             <div class="invalid-feedback">
                 {{ $message }}

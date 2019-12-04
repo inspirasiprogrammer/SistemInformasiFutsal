@@ -85,6 +85,7 @@ Route::middleware("auth")->group(function(){
     })->name("admin.beli.form");
 
     Route::resource('item','ItemController');
+    Route::resource('supplier','SupplierController');
 
     Route::get('/admin/item/list', function(){
         return view('admin.item.list');

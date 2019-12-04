@@ -40,7 +40,7 @@ class ItemController extends Controller
         $request->validate([
             'nama' => 'required|max:50',
             'stok' => 'required|digits_between:1,6|numeric',
-            'satuan' => 'require|max:50',
+            'satuan' => 'required|max:50',
             'jual' => 'required|digits_between:1,6|numeric',
             'beli' => 'required|digits_between:1,6|numeric'
         ]);
@@ -50,8 +50,8 @@ class ItemController extends Controller
         $item->stok = $request->stok;
         $item->jenis_id = $request->jenis_id;
         $item->satuan = $request->satuan;
-        $item->jual = $request->$jual;
-        $item->beli = $request->$beli;
+        $item->jual = $request->jual;
+        $item->beli = $request->beli;
         $item->save();
 
         $request->session()->flash("info","Berhasil Tambah Data Item");
@@ -95,7 +95,7 @@ class ItemController extends Controller
         $request->validate([
             'nama' => 'required|max:50',
             'stok' => 'required|digits_between:1,6|numeric',
-            'satuan' => 'require|max:50',
+            'satuan' => 'required|max:50',
             'jual' => 'required|digits_between:1,6|numeric',
             'beli' => 'required|digits_between:1,6|numeric'
         ]);

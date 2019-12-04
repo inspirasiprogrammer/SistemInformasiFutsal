@@ -87,7 +87,7 @@
                         <div class="icon">
                             <i class="ion ion-cube"></i>
                         </div>
-                        <a href="{{route('item.form')}}" class="small-box-footer">Masuk <i
+                        <a href="{{route('item.create')}}" class="small-box-footer">Masuk <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
