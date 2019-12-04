@@ -22,13 +22,13 @@ Auth::routes();
 
 Route::middleware("auth")->group(function(){
     Route::get('/home', function(){
-        if (Auth::user()->level=='a'){
-            $data = Sifut::paginate(10);
-            return view("admin.dashboard",compact("data"));
-        }else{
-            return view('dashboard');
-        }
-        
+        // if (Auth::user()->level=='a'){
+        //     $data = Sifut::paginate(10);
+        //     return view("admin.dashboard",compact("data"));
+        // }else{
+        //     return view('dashboard');
+        // }
+        return view('dashboard');
     })->name("home");
 
     

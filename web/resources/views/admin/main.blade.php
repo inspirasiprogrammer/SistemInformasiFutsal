@@ -34,7 +34,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         @include('partials.navbar')
-        @include('admin.sidebar')
+        @include('partials.sidebar')
 
         @yield("content")
 
