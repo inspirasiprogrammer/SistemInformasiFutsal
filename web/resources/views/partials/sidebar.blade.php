@@ -81,6 +81,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('supplier.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-futbol"></i>
+                        <p>
+                            Testing
+                        </p>
+                    </a>
+                </li>
                 @if (Auth::user()->level=='a')
                 <li class="nav-item">
                         <a href="{{ route('laporan.tahunan') }}" class="nav-link">
