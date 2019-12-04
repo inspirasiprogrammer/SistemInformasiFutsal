@@ -36,4 +36,27 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getNamaLevelAttribute(){
+        $namalevel = "";
+        switch ($this->level){
+            case 'a':
+                $namalevel = "Admin";
+                break;
+            case 'k':
+                $namalevel = "Kasir";
+                break;
+            case 'c':
+                $namalevel = "Customer";
+                break;
+            case 'm':
+                $namalevel = "Manajer";
+                break;
+            default:
+                $namalevel="NA";
+                break;
+        }
+
+        return $namalevel;
+    }
 }

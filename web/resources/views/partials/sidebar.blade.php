@@ -50,7 +50,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('customer.list') }}" class="nav-link">
+                    <a href="{{ route('user.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-user-circle"></i>
                         <p>
                             {{ Auth::user()->level=='a'?"Akun":"Customer" }}

@@ -1,6 +1,6 @@
-@extends('admin.main')
+@extends('main')
 
-@section('title','Akun')
+@section('title','Home')
 
 @section('content')
 <div class="content-wrapper">
@@ -17,64 +17,56 @@
             </div>
         </div>
     </section>
+
     <section class="content">
-        <div class="card">
-            <div class="card-header"><h4>List Akun</h4></div>
-            <div class="card-body">
-                <table class="table table-bordered table-striped">
-                        <a href="{{route('admin.form')}}" class="btn btn-success float-right mb-2">+</a>
-                    <thead>
-                        <tr>
-                            <th>Nama</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Telepon</th>
-                            <th>Level</th>
-                            <th colspan="2" width=25%>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Admin</td>
-                            <td>Admin</td>
-                            <td>Admin@gmail.com</td>
-                            <td>0812134111111</td>
-                            <td>Admin</td>
-                            <td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
-                            <td><a href="" class="btn btn-danger btn-block">hapus</a></td>  
-                        </tr>
-                        <tr>
-                            <td>Kasir</td>
-                            <td>Kasir</td>
-                            <td>Kasir@gmail.com</td>
-                            <td>0812134545563</td>
-                            <td>Kasir</td>
-                            <td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
-                            <td><a href="" class="btn btn-danger btn-block">hapus</a></td>  
-                        </tr>
-                        <tr>
-                            <td>Fredi</td>
-                            <td>FrediCancau</td>
-                            <td>fredicancau@gmail.com</td>
-                            <td>0812134578443</td>
-                            <td>Customer</td>
-                            <td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
-                            <td><a href="" class="btn btn-danger btn-block">hapus</a></td>  
-                        </tr>
-                                                     
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="5">Jumlah Akun</td>
-                            <td colspan="2"> 3 Akun</td>
-                        </tr>
-                    </tfoot>
-                </table>
+            <div class="card">
+                <div class="card-header"><h4>List Akun</h4></div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                            <a href="{{route('user.create')}}" class="btn btn-success float-right mb-2">+</a>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th>Level</th>
+                                <th colspan="2" width=25%>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($data as $item)
+                            <tr>
+                                <td>{{ $loop->iteration + (10*($data->currentPage()-1 )) }}</td>                    
+                                <td>{{$item->name}}</td>
+                                <td>{{$item->email}}</td>
+                                <td>{{$item->namalevel}}</td>
+                                <td><a href="{{route('user.show',[$item->id])}}" class="btn btn-warning btn-block"><i class="fa fa-pencil-alt"></i>Ubah</a></td>
+        
+                                <td>
+                                <form action="{{route("user.destroy",[$item->id])}}" method="POST">
+                                                       
+                                @method("DELETE")
+                                    @csrf
+                                <button type="submit" class="btn btn-danger btn-block">
+                                    <i class="fa fa-trash"></i> Hapus
+                                </button>
+                                </form>
+                                </td>
+                            </tr>
+                                @endforeach
+                                  
+                                    
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4">Jumlah User</td>
+                                <td colspan="2">2 Item</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
-        </div>
-    </section>
-
+        </section>
+                
 </div>
-
-
 @endsection
