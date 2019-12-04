@@ -60,7 +60,7 @@
                         <tfoot>
                             <tr>
                                 <td colspan="4">Jumlah Supplier</td>
-                                <td colspan="2">2 Item</td>
+                                <td colspan="2">2 Supplier</td>
                             </tr>
                         </tfoot>
                     </table>
