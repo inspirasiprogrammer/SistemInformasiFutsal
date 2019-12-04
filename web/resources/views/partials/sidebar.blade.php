@@ -53,7 +53,7 @@
                     <a href="{{ route('customer.list') }}" class="nav-link">
                         <i class="nav-icon fas fa-user-circle"></i>
                         <p>
-                            Customer
+                            {{ Auth::user()->level=='a'?"Akun":"Customer" }}
                         </p>
                     </a>
                 </li>
@@ -73,6 +73,17 @@
                         </p>
                     </a>
                 </li>
+                @if (Auth::user()->level=='a')
+                <li class="nav-item">
+                        <a href="{{ route('laporan.tahunan') }}" class="nav-link">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>
+                                Laporan
+                            </p>
+                        </a>
+                    </li>
+                @endif
+                
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
