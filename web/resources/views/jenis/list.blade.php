@@ -23,7 +23,7 @@
                 <div class="card-header"><h4>List Jenis</h4></div>
                 <div class="card-body">
                     <table class="table table-bordered table-striped">
-                            <a href="{{route('jenis.form')}}" class="btn btn-success float-right mb-2">+</a>
+                            <a href="{{route('jenis.create')}}" class="btn btn-success float-right mb-2">+</a>
                         <thead>
                             <tr>
                                 <th>No</th>

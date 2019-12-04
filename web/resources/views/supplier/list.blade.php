@@ -20,7 +20,7 @@
 
     <section class="content">
             <div class="card">
-                <div class="card-header"><h4>list Supplier</h4></div>
+                <div class="card-header"><h4>List Supplier</h4></div>
                 <div class="card-body">
                     <table class="table table-bordered table-striped">
                             <a href="{{route('supplier.create')}}" class="btn btn-success float-right mb-2">+</a>

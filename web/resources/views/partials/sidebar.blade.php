@@ -75,7 +75,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('supplier.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-futbol"></i>
+                        <i class="nav-icon fas fa-american-sign-language-interpreting"></i>
                         <p>
                             Supplier
                         </p>
