@@ -27,7 +27,6 @@
                 </span>
                 @enderror
                 </div>
-
                 <div class="form-group">
                     <label for="level">Level</label>
                     <select name="level" id="level"
@@ -40,6 +39,7 @@
                         Kasir</option>
                     </select>
                 </div>
+                
                 
                 <div class="input-group mb-3">
                     <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Email">

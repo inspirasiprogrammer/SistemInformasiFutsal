@@ -86,16 +86,10 @@ Route::middleware("auth")->group(function(){
 
     Route::resource('item','ItemController');
     Route::resource('supplier','SupplierController');
+    Route::resource('user','UserController');
 
-    Route::get('/admin/item/list', function(){
-        return view('admin.item.list');
-    })->name("admin.item.list");
-    Route::get('/admin/item/form', function(){
-        return view('admin.item.form');
-    })->name("admin.item.form");
 
-    Route::get('customer/list', "CustomerController@customerlist")->name("customer.list");
-    Route::get('customer/form', "CustomerController@customerform")->name("customer.form");
+    
 
     Route::get('/laporan/tahunan', function(){
         return view('admin.laporan.tahunan');
