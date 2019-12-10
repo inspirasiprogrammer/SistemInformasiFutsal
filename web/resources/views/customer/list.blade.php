@@ -22,28 +22,40 @@
             <div class="card-header"><h4>list customer</h4></div>
             <div class="card-body">
                 <table class="table table-bordered table-striped">
-                        <a href="{{route('customer.form')}}" class="btn btn-success float-right mb-2">+</a>
+                        <a href="{{route('user.create')}}" class="btn btn-success float-right mb-2">+</a>
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Nama</th>
-                            <th>Username</th>
                             <th>Email</th>
-                            <th>Telepon</th>
-        
+                          
                             <th colspan="2" width=25%>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <td>Fredi</td>
-                        <td>FrediCancau</td>
-                        <td>fredicancau@gmail.com</td>
-                        <td>0812134578443</td>
-                        <td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
-                        <td><a href="" class="btn btn-danger btn-block">hapus</a></td>                               
+                        @foreach ($data as $item)
+                        <tr>
+                            <td>{{ $loop->iteration + (10*($data->currentPage()-1 )) }}</td>                    
+                            <td>{{$item->name}}</td>
+                            <td>{{$item->email}}</td>
+                            <td><a href="{{route('user.show',[$item->id])}}" class="btn btn-warning btn-block"><i class="fa fa-pencil-alt"></i>Ubah</a></td>
+    
+                            <td>
+                            <form action="{{route("user.destroy",[$item->id])}}" method="POST">
+                                                   
+                            @method("DELETE")
+                                @csrf
+                            <button type="submit" class="btn btn-danger btn-block">
+                                <i class="fa fa-trash"></i> Hapus
+                            </button>
+                            </form>
+                            </td>
+                        </tr>
+                            @endforeach   
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="4">Jumlah Customer</td>
+                            <td colspan="3">Jumlah Customer</td>
                             <td colspan="2"> Customer</td>
                         </tr>
                     </tfoot>

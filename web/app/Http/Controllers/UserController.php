@@ -17,16 +17,45 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
         $data = Sifut::paginate(10);
         if (Auth::user()->level=='a'){
             return view("admin.list",compact("data"));
         }else{
             return view("customer.list",compact("data"));
         }
+    }
+    
+    public function simpan(Request $request){
+        $request->validate([
+            'name' => "required|max:100"
+        ]);
+        //
+       
         
+        if($request->hasFile("profilepic")){
+            $file = $request->file("profilepic")->extension();
+            
+            // $request->file("profilepic")
+            //     ->storeAs("/public/profie"
+            //     ,auth()->user()->id.",".$fileExt);
+            Storage::delete("/public/profile".auth()->user()->filename);
+         
+            $fullpath = $request->file("profilepic")
+                        ->store("/public/profile");
+
+            $filename = explode("/",$fullpath)[2];
+            \App\User::where('id',auth()->user()->id)
+                ->update(["name" => $request->name,
+                        "filename" => $filename ]);
+            
+        }else{
+            \App\User::where('id',auth()->user()->id)
+                    ->update(["name" => $request->name]);
+        }
+
+        
+        return redirect()->route("user");
     }
 
     /**
@@ -134,4 +163,6 @@ class UserController extends Controller
         return redirect()->route("user.index")
             ->with("info","Berhasil Hapus Data Akun");
     }
+
+
 }

@@ -56,6 +56,8 @@ Route::middleware("auth")->group(function(){
     Route::get('lapangan/form', "LapanganController@lapanganform")->name("lapangan.form");
     Route::get('sewa', "LapanganController@sewa")->name("sewa");
 
+    
+
     Route::get('/admin/sewa', function(){
         return view('admin.sewa.form');
     })->name("admin.lapangan.sewa");
@@ -87,6 +89,7 @@ Route::middleware("auth")->group(function(){
     Route::resource('item','ItemController');
     Route::resource('supplier','SupplierController');
     Route::resource('user','UserController');
+    route::get('user/simpan','UserController@simpan')->name('user.simpan');
 
 
     
