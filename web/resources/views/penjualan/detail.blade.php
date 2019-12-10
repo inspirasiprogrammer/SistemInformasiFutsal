@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-header"><h4>List Penjualan</h4></div>
             <div class="card-body">
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped" id="tabeldetail">
                 <div class="row">
                     <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
                         <div class="float-left">12 November 2019</div>
@@ -46,7 +46,7 @@
                             <th style="width:10%;">Id</th>
                             <th>Nama</th>
                             <th>Harga</th>
-                            <th style="width:7%;">@</th>
+                            <th style="width:9%;">@</th>
                             <th>Diskon</th>
                             <th>Jumlah</th>
                             <th>Hapus</th>
@@ -72,27 +72,27 @@
                         <td><a href="" class="btn btn-danger btn-block">X</a></td>
                         </tr>                  
                         <tr>
-                            <td></td>
+                            <td><input type="text" class="form-control " name="idbarang" style="pointer-events: none;" id="idbarang"></td>
                             <td>
                                 <div class="form-group">
-                                    <select class="select2" multiple="multiple" data-placeholder="Nama Barang" style="width: 100%;">
-                                        <option>Celana</option>
-                                        <option>Gatorite</option>
-                                        <option>Lapangan A</option>
-                                        <option>Lapangan B</option>
-                                        <option>Sepatu</option>
-                                        <option>Seragam</option>
-                                        <option>Pokari Set</option>
+                                    <select class="select2" data-placeholder="Nama Barang" style="width: 100%;" onchange="addrow()" id="namabarang">
+                                        <option value="Celana">Celana</option>
+                                        <option value="Gatorite">Gatorite</option>
+                                        <option value="Lapangan A">Lapangan A</option>
+                                        <option value="Lapangan B">Lapangan B</option>
+                                        <option value="Sepatu">Sepatu</option>
+                                        <option value="Seragam">Seragam</option>
+                                        <option value="Pokari Set">Pokari Set</option>
                                     </select>
                                 </div>
                             </td>
-                            <td></td>
+                            <td><input type="text" class="form-control " name="harga" style="pointer-events: none;" id="harga"></td>
                             <td><div class="form-group">
-                                    <input type="number">
+                                    <input type="number" class="form-control" name="qty" id="qty" style="width:100%;" onkeyup="jlhbarang()" disabled>
                                 </div></td>
-                            <td></td>
-                            <td></td>
-                        <td><a href="" class="btn btn-info btn-block">+</a></td>
+                            <td><input type="text" class="form-control " name="diskon" style="pointer-events: none;" id="diskon"></td>
+                            <td><input type="text" class="form-control " name="jumlah" style="pointer-events: none;" id="jumlah"></td>
+                        <td><button class="btn btn-info btn-block" onclick="tambah()" disabled id="tbl">+</button></td>
                         </tr>                  
                                         
                     </tbody>
@@ -108,10 +108,56 @@
                     </tfoot>
                     
                 </table>
+                @php
+                $nr = 2
+                @endphp
                 <a href="{{route("jual.bayar")}}" class="btn btn-success">Bayar</a>
             </div>
         </div>
     </section>
 </div>
 
+@endsection
+@section('script')
+ <script>
+ function addrow() {
+    document.getElementById("idbarang").value=23;
+    document.getElementById("harga").value=10000;
+    document.getElementById("qty").disabled=false;
+    }
+function jlhbarang(){
+    document.getElementById("jumlah").value=Number(document.getElementById("harga").value)*Number(document.getElementById("qty").value);
+    document.getElementById("diskon").value='0.00';
+    document.getElementById("tbl").disabled=false;
+}
+function tambah(){
+    var table = document.getElementById("tabeldetail");
+
+var row = table.insertRow(2);
+
+
+var cell1 = row.insertCell(0);
+var cell2 = row.insertCell(1);
+var cell3 = row.insertCell(2);
+var cell4 = row.insertCell(3);
+var cell5 = row.insertCell(4);
+var cell6 = row.insertCell(5);
+var cell7 = row.insertCell(6);
+
+cell1.innerHTML = document.getElementById("idbarang").value;
+cell2.innerHTML = document.getElementById("namabarang").value; 
+cell3.innerHTML = document.getElementById("harga").value; 
+cell4.innerHTML = document.getElementById("qty").value; 
+cell5.innerHTML = document.getElementById("diskon").value; 
+cell6.innerHTML = document.getElementById("jumlah").value; 
+cell7.innerHTML = '<a href="" class="btn btn-danger btn-block">X</a>'; 
+
+document.getElementById("idbarang").value=0;
+document.getElementById("namabarang").value=0; 
+document.getElementById("harga").value=0; 
+document.getElementById("qty").value=0; 
+document.getElementById("diskon").value=0; 
+document.getElementById("jumlah").value=0; 
+}
+      </script>
 @endsection

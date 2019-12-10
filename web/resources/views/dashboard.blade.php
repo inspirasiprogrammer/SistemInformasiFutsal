@@ -71,7 +71,7 @@
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="{{route('customer.form')}}" class="small-box-footer">Masuk<i
+                        <a href="{{route('user.create')}}" class="small-box-footer">Masuk<i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
