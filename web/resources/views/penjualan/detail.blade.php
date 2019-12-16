@@ -52,37 +52,16 @@
                             <th>Hapus</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Lapangan A</td>
-                            <td>120.000</td>
-                            <td>1</td>
-                            <td>0.00</td>
-                            <td>120.000</td>
-                        <td><a href="" class="btn btn-danger btn-block">X</a></td>
-                        </tr>                  
-                        <tr>
-                            <td>23</td>
-                            <td>Gatorite</td>
-                            <td>10.000</td>
-                            <td>12</td>
-                            <td>0.00</td>
-                            <td>120.000</td>
-                        <td><a href="" class="btn btn-danger btn-block">X</a></td>
-                        </tr>                  
+                    <tbody>                
                         <tr>
                             <td><input type="text" class="form-control " name="idbarang" style="pointer-events: none;" id="idbarang"></td>
                             <td>
                                 <div class="form-group">
-                                    <select class="select2" data-placeholder="Nama Barang" style="width: 100%;" onchange="addrow()" id="namabarang">
-                                        <option value="Celana">Celana</option>
-                                        <option value="Gatorite">Gatorite</option>
-                                        <option value="Lapangan A">Lapangan A</option>
-                                        <option value="Lapangan B">Lapangan B</option>
-                                        <option value="Sepatu">Sepatu</option>
-                                        <option value="Seragam">Seragam</option>
-                                        <option value="Pokari Set">Pokari Set</option>
+                                    <select class="select2" data-placeholder="Nama Barang" style="width: 100%;"  id="namabarang" name="namabarang">
+                                        @foreach ($barang as $item)
+                                    <option value="{{ $item->id }}">
+                                    {{ $item->nama }}</option>
+                            @endforeach
                                     </select>
                                 </div>
                             </td>
@@ -108,9 +87,6 @@
                     </tfoot>
                     
                 </table>
-                @php
-                $nr = 2
-                @endphp
                 <a href="{{route("jual.bayar")}}" class="btn btn-success">Bayar</a>
             </div>
         </div>
@@ -118,9 +94,18 @@
 </div>
 
 @endsection
-@section('script')
+@push('scripts')
  <script>
- function addrow() {
+ $(document).ready(function(){
+        $('select#namabarang').change(function(){
+            var itemid=$(this).val();
+            $.get('/item/jual/'+itemid,function(data)
+            {
+                $("input[name='harga']").val(data);
+            },'json');
+        });
+    });
+    function addrow() {
     document.getElementById("idbarang").value=23;
     document.getElementById("harga").value=10000;
     document.getElementById("qty").disabled=false;
@@ -132,10 +117,7 @@ function jlhbarang(){
 }
 function tambah(){
     var table = document.getElementById("tabeldetail");
-
 var row = table.insertRow(2);
-
-
 var cell1 = row.insertCell(0);
 var cell2 = row.insertCell(1);
 var cell3 = row.insertCell(2);
@@ -143,7 +125,6 @@ var cell4 = row.insertCell(3);
 var cell5 = row.insertCell(4);
 var cell6 = row.insertCell(5);
 var cell7 = row.insertCell(6);
-
 cell1.innerHTML = document.getElementById("idbarang").value;
 cell2.innerHTML = document.getElementById("namabarang").value; 
 cell3.innerHTML = document.getElementById("harga").value; 
@@ -151,7 +132,6 @@ cell4.innerHTML = document.getElementById("qty").value;
 cell5.innerHTML = document.getElementById("diskon").value; 
 cell6.innerHTML = document.getElementById("jumlah").value; 
 cell7.innerHTML = '<a href="" class="btn btn-danger btn-block">X</a>'; 
-
 document.getElementById("idbarang").value=0;
 document.getElementById("namabarang").value=0; 
 document.getElementById("harga").value=0; 
@@ -160,4 +140,4 @@ document.getElementById("diskon").value=0;
 document.getElementById("jumlah").value=0; 
 }
       </script>
-@endsection
+@endpush

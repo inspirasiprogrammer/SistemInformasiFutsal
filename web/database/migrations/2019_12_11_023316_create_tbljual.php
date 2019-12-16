@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbluser extends Migration
+class CreateTbljual extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateTbluser extends Migration
      */
     public function up()
     {
-        Schema::create('tbluser', function (Blueprint $table) {
+        Schema::create('tbljual', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->date('tanggal');
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateTbluser extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbluser');
+        Schema::dropIfExists('tbljual');
     }
 }

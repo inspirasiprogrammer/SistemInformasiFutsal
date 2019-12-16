@@ -87,6 +87,8 @@ Route::middleware("auth")->group(function(){
     })->name("admin.beli.form");
 
     Route::resource('item','ItemController');
+    Route::resource('jual','JualController');
+    Route::get('/item/jual/{iditem}','JualController@getjual');
     Route::resource('supplier','SupplierController');
     Route::resource('user','UserController');
     route::get('user/simpan','UserController@simpan')->name('user.simpan');
