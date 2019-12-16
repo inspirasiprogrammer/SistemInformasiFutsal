@@ -49,7 +49,7 @@
                             <th style="width:9%;">@</th>
                             <th>Diskon</th>
                             <th>Jumlah</th>
-                            <th>Hapus</th>
+                            <th colspan="2">Action</th>
                         </tr>
                     </thead>
                     <tbody>                
@@ -71,18 +71,14 @@
                                 </div></td>
                             <td><input type="text" class="form-control " name="diskon" style="pointer-events: none;" id="diskon"></td>
                             <td><input type="text" class="form-control " name="jumlah" style="pointer-events: none;" id="jumlah"></td>
-                        <td><button class="btn btn-info btn-block" onclick="tambah()" disabled id="tbl">+</button></td>
+                        <td colspan="2"><button class="btn btn-info btn-block" onclick="tambah()" disabled id="tbl">+</button></td>
                         </tr>                  
                                         
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="4"></td>
-                            <td colspan="2">Total</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4"></td>
-                            <td colspan="2">240.000</td>
+                            <td colspan="5">Total</td>
+                            <td colspan="2"><input type="text" class="form-control " name="total" style="pointer-events: none;" id="total" value="{{$total}}"></td>
                         </tr>
                     </tfoot>
                     
@@ -103,21 +99,25 @@
             {
                 $("input[name='harga']").val(data);
             },'json');
+            document.getElementById("idbarang").value=document.getElementById("namabarang").value
+            document.getElementById("qty").disabled=false;
         });
     });
-    function addrow() {
-    document.getElementById("idbarang").value=23;
-    document.getElementById("harga").value=10000;
-    document.getElementById("qty").disabled=false;
-    }
+    // function addrow() {
+    // document.getElementById("idbarang").value=23;
+    // document.getElementById("harga").value=10000;
+    // document.getElementById("qty").disabled=false;
+    // }
 function jlhbarang(){
     document.getElementById("jumlah").value=Number(document.getElementById("harga").value)*Number(document.getElementById("qty").value);
+    
     document.getElementById("diskon").value='0.00';
     document.getElementById("tbl").disabled=false;
 }
 function tambah(){
     var table = document.getElementById("tabeldetail");
-var row = table.insertRow(2);
+// inisialisasi row
+var row = table.insertRow({{$row}});
 var cell1 = row.insertCell(0);
 var cell2 = row.insertCell(1);
 var cell3 = row.insertCell(2);
@@ -125,19 +125,29 @@ var cell4 = row.insertCell(3);
 var cell5 = row.insertCell(4);
 var cell6 = row.insertCell(5);
 var cell7 = row.insertCell(6);
+var cell8 = row.insertCell(7);
+
+// input isi row 
 cell1.innerHTML = document.getElementById("idbarang").value;
-cell2.innerHTML = document.getElementById("namabarang").value; 
+cell2.innerHTML = document.getElementById("namabarang").text; 
 cell3.innerHTML = document.getElementById("harga").value; 
 cell4.innerHTML = document.getElementById("qty").value; 
 cell5.innerHTML = document.getElementById("diskon").value; 
 cell6.innerHTML = document.getElementById("jumlah").value; 
-cell7.innerHTML = '<a href="" class="btn btn-danger btn-block">X</a>'; 
+cell7.innerHTML = '<a href="" class="btn btn-info btn-block">Edit</a>'; 
+cell8.innerHTML = '<a href="" class="btn btn-danger btn-block">Delete</a>'; 
+document.getElementById("total").value=Number(document.getElementById("total").value) + Number(document.getElementById("jumlah").value);
+
 document.getElementById("idbarang").value=0;
 document.getElementById("namabarang").value=0; 
 document.getElementById("harga").value=0; 
 document.getElementById("qty").value=0; 
 document.getElementById("diskon").value=0; 
 document.getElementById("jumlah").value=0; 
+document.getElementById("qty").disabled=true;
+document.getElementById("tbl").disabled=true;
+
+{{$row=$row+1}}
 }
       </script>
 @endpush

@@ -29,10 +29,11 @@ class JualController extends Controller
     public function create()
     {
         //
-        $row=0;
+        $row=1;
+        $total=0;
         $jual = Jual::all();
         $barang=Item::all();
-        return view("penjualan.detail",compact("jual","barang","row"));
+        return view("penjualan.detail",compact("jual","barang","row","total"));
     }
 
     /**
