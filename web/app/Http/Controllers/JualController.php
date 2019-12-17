@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Item;
 use App\DetailJual;
 use App\Jual;
+use App\Tempdtljual;
+use App\Tempjual;
+use App\Sifut;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
@@ -29,11 +33,14 @@ class JualController extends Controller
     public function create()
     {
         //
+        DB::table('tbltempjual')->where('id',1)->update([
+            'jumlah'=>0]);
+        Tempdtljual::truncate();
         $row=1;
-        $total=0;
-        $jual = Jual::all();
+        $data = Tempdtljual::all();
+        $jual = Tempjual::find(1);
         $barang=Item::all();
-        return view("penjualan.detail",compact("jual","barang","row","total"));
+        return view("penjualan.detail",compact("barang","row","data","jual"));
     }
 
     /**
@@ -45,6 +52,20 @@ class JualController extends Controller
     public function store(Request $request)
     {
         //
+        DB::table('tbltempjual')->increment('jumlah',$request->jumlah);
+        $dtljual = new Tempdtljual;
+        $dtljual->jual_id = 1;
+        $dtljual->item_id = $request->namabarang;
+        $dtljual->qty = $request->qty;
+        $dtljual->total = $request->jumlah;
+        $dtljual->save();
+
+        $row=1;
+        $data = Tempdtljual::all();
+        $jual = Tempjual::find(1);
+        $barang=Item::all();
+        return view("penjualan.detail",compact("barang","row","data","jual"));
+        
     }
 
     /**
@@ -90,9 +111,54 @@ class JualController extends Controller
     public function destroy($id)
     {
         //
+        $temp=Tempjual::find(1);
+        $temp2=Tempdtljual::find($id);
+        $jumlah=$temp->jumlah - $temp2->total;
+        DB::table('tbltempjual')->where('id',1)->update([
+            'jumlah'=>$jumlah]);
+        Tempdtjual::destroy($id);
+        $row=1;
+        $data = Tempdtljual::all();
+        $jual = Tempjual::find(1);
+        $barang=Item::all();
+        return view("penjualan.detail",compact("barang","row","data","jual"));
     }
 
     public function getjual($itemid){
-        return response()->json(Item::find($itemid)->jual);
+        return response()->json(Item::selectRaw('jual,nama')->find($itemid));
+    }
+    public function bayar(){
+        $jual = Tempjual::find(1);
+        return view("penjualan.bayar",compact("jual"));
+    }
+    public function simpan(){
+        $tempjual = Tempjual::all();
+        $tempdtljual = Tempdtljual::all();
+
+        $jual = new Jual;
+        $jual->user_id = 6;
+        $jual->tanggal = date('Y-m-d H:i:s');
+        $jual->jumlah = $tempjual->jumlah;
+        $jual->save();
+        
+        foreach ($tempdtljual as $item){
+            $dtljual = new DetailJual;
+            $dtljual->jual_id = $jual->id;
+            $dtljual->item_id = $item->item_id;
+            $dtljual->qty = $item->qty;
+            $dtljual->total = $item->total;
+            $dtljual->save();
+        }
+        
+
+        return redirect()->view("penjualan.list");
+        
+    }
+    public function batal(){
+        $row=1;
+        $data = Tempdtljual::all();
+        $jual = Tempjual::find(1);
+        $barang=Item::all();
+        return view("penjualan.detail",compact("barang","row","data","jual"));
     }
 }

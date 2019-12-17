@@ -63,8 +63,6 @@ Route::middleware("auth")->group(function(){
     })->name("admin.lapangan.sewa");
 
     Route::get('jual/list', "KasirController@juallist")->name("jual.list");
-    Route::get('jual/form', "KasirController@jualform")->name("jual.form");
-    Route::get('jual/bayar', "KasirController@jualbayar")->name("jual.bayar");
 
     Route::get('/admin/jual/list', function(){
         return view('admin.penjualan.list');
@@ -89,6 +87,10 @@ Route::middleware("auth")->group(function(){
     Route::resource('item','ItemController');
     Route::resource('jual','JualController');
     Route::get('/item/jual/{iditem}','JualController@getjual');
+    Route::get('/bayar','JualController@bayar')->name('jual.bayar');
+    Route::get('/batal','JualController@batal')->name('jual.batal');
+
+    Route::post('/simpan','JualController@bayar')->name('jual.simpan');
     Route::resource('supplier','SupplierController');
     Route::resource('user','UserController');
     route::get('user/simpan','UserController@simpan')->name('user.simpan');

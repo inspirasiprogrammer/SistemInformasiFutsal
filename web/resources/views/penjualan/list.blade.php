@@ -34,7 +34,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><a href="{{route('jual.form')}}">01</a></td>
+                            <td><a href="">01</a></td>
                             <td>08.00</td>
                             <td></td>
                             <td>120.000</td>

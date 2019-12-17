@@ -47,7 +47,7 @@ class ItemController extends Controller
 
         $item = new item;
         $item->nama = $request->nama;
-        $item->stok = $request->stok;
+        $item->stok = $request->stok+$itemstok;
         $item->jenis_id = $request->jenis_id;
         $item->satuan = $request->satuan;
         $item->jual = $request->jual;

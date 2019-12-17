@@ -4,12 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Jual extends Model
+class Tempjual extends Model
 {
-    //
-    protected $table = "tbljual";
+    protected $table = "tbltempjual";
 
-    protected $fillable = ['user_id','tanggal','jumlah'];
+    protected $fillable = ['user_id','jumlah'];
 
     public function user()
     {
@@ -18,6 +17,6 @@ class Jual extends Model
 
     public function detailjual()
     {
-        return $this->hasMany('App\DetailJual');
+        return $this->hasMany('App\Tempdtljual');
     }
 }
