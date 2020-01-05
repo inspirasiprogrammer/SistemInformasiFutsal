@@ -11,7 +11,9 @@
                 <div class="col-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route("home") }}">Home</a></li>
-                        <li class="breadcrumb-item active">List Penjualan</li>
+                        <li class="breadcrumb-item active"><a href="{{ route('jual.index') }}">List Penjualan</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('jual.kembali') }}">Detail</a></li>
+                        <li class="breadcrumb-item active">Bayar</li>
                     </ol>
                 </div>
             </div>
@@ -19,16 +21,20 @@
     </section>
     <section class="content">
         <div class="container-fluid">
-            <form action="{{ route('jual.simpan') }}">
+            <form action="{{ route('jual.simpan') }}" method="POST">
+                @csrf
+    @if (isset($data))
+        @method("PUT")
+    @endif
                 <div class="row"  style="margin-bottom:50px;">
-                    @csrf
+                    
                 
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <label for="total">Total</label>
                         <input type="text" class="form-control " name="total" id="total" style="width:50%; pointer-events: none;" value="{{ $jual->jumlah }}">
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12">
-                        <label for="kembalian">Kembalian</label>
+                        <label for="kembalian">Kembali</label>
                         <input type="number" class="form-control " name="kembalian" id="kembalian" style="width:50%; pointer-events: none;">
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12"  >
@@ -110,8 +116,8 @@
 @section('script')
  <script>
  function testing(nilai) {
-        document.getElementById("bayar").value=Number(document.getElementById("bayar").value)+Number(nilai);
-        document.getElementById("kembalian").value=Number(document.getElementById("bayar").value)+Number(document.getElementById("kredit").value)+Number(document.getElementById("debit").value)-Number(document.getElementById("total").value);
+        document.getElementById("bayar").value= Number(document.getElementById("bayar").value) + Number(nilai);
+        document.getElementById("kembalian").value= Number(document.getElementById("bayar").value) + Number(document.getElementById("kredit").value) + Number(document.getElementById("debit").value) - Number(document.getElementById("total").value);
       }
     function ulang(){
         document.getElementById("bayar").value=0;
@@ -120,7 +126,7 @@
         document.getElementById("debit").value=0
     }
     function jlhbayar(){
-    document.getElementById("kembalian").value=Number(document.getElementById("bayar").value)+Number(document.getElementById("kredit").value)+Number(document.getElementById("debit").value)-Number(document.getElementById("total").value);
+    document.getElementById("kembalian").value= Number(document.getElementById("bayar").value) + Number(document.getElementById("kredit").value) + Number(document.getElementById("debit").value) - Number(document.getElementById("total").value);
 }
     
       </script>

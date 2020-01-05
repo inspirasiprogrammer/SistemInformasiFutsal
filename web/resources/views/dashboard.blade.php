@@ -39,7 +39,7 @@
                         <div class="icon">
                             <i class="ion ion-bag"></i>
                         </div>
-                        <a href="{{route('jual.form')}}" class="small-box-footer">Masuk <i
+                        <a href="{{route('jual.index')}}" class="small-box-footer">Masuk <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>

@@ -11,7 +11,8 @@
                 <div class="col-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route("home") }}">Home</a></li>
-                        <li class="breadcrumb-item active">List Penjualan</li>
+                        <li class="breadcrumb-item active"><a href="{{ route('jual.index') }}">List Penjualan</a></li>
+                        <li class="breadcrumb-item active">Detail</li>
                     </ol>
                 </div>
             </div>
@@ -19,7 +20,7 @@
     </section>
     <section class="content">
         <div class="card">
-            <div class="card-header"><h4>List Penjualan</h4></div>
+            <div class="card-header"><h4>Detail Penjualan</h4></div>
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <input type="hidden" name="bayar" id="bayar" value="0">
             </div>
@@ -32,7 +33,12 @@
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
                                 <div class="float-left">
-                                    Panca
+                                        <select class="select2" data-placeholder="Nama Kustomer" style="width: 100%;"  id="kustomer" name="kustomer" onchange="idkustomer()">
+                                @foreach ($kustomer as $nama)
+                                        <option value="{{ $nama->id }}" {{ $jual->user_id==$nama->id?"selected":"" }}>
+                                        {{ $nama->name }}</option>
+                                @endforeach
+                                        </select>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
@@ -55,39 +61,41 @@
                                     <th>Nama</th>
                                     <th>Harga</th>
                                     <th style="width:9%;">@</th>
-                                    <th>Diskon</th>
                                     <th>Jumlah</th>
                                     <th colspan="2">Action</th>
                                 </tr>
                             </thead>
                             <tbody>                
                                 <tr>
-                                    @foreach ($data as $item)
-                            <tr>
-                                <td>{{ $item->item->id }}</td>
-                                <td>{{ $item->item->nama }}</td>
-                                <td>{{ $item->item->jual }}</td>
-                                <td>{{ $item->qty }}</td>
-                                <td>0.00</td>
-                                <td>{{ $item->qty * $item->item->jual}}</td>
-                                
-                                <td><a href="{{ route("jual.show",[$item->id]) }}" class="btn btn-warning btn-block"><i class="fa fa-pencil-alt"></i> Rubah</a></td>
-                                <td>
-                                    <form action="{{ route("jual.destroy",[$item->id]) }}"
-                                        method="POST">
-                                        @method("delete")
-                                        @csrf
-                                        <button type="submit"
-                                            class="btn btn-danger btn-block">
-                                            <i class="fa fa-trash"></i> Hapus
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
+                            @if (isset($data))
+                            @foreach ($data as $item)
+                                <tr>
+                                    <td>{{ $item->item->id }}</td>
+                                    <td>{{ $item->item->nama }}</td>
+                                    <td>{{ $item->item->jual }}</td>
+                                    <td>{{ $item->qty }}</td>
+                                    <td>{{ $item->qty * $item->item->jual}}</td>
+                                    
+                                    <td><a href="{{ route("jual.show",[$item->id]) }}" class="btn btn-warning btn-block"><i class="fa fa-pencil-alt"></i> Rubah</a></td>
+                                    <td>
+                                        <form action="{{ route("jual.destroy",[$item->id]) }}"
+                                            method="POST">
+                                            @method("DELETE")
+                                            @csrf
+                                            <button type="submit"
+                                                class="btn btn-danger btn-block">
+                                                <i class="fa fa-trash"></i> Hapus
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach  
+                            @endif
+                        
                                     <form action="{{ route('jual.store') }}" method="POST" autocomplete="off">
                                         @csrf
-                                        <td><input type="text" class="form-control " name="idbarang" style="pointer-events: none;" id="idbarang"></td>
+                                    <td><input type="hidden" id="custid" name="custid" value="6">
+                                            <input type="text" class="form-control " name="idbarang" style="pointer-events: none;" id="idbarang"></td>
                                         <td>
                                             <div class="form-group">
                                                 <select class="select2" data-placeholder="Nama Barang" style="width: 100%;"  id="namabarang" name="namabarang">
@@ -102,7 +110,6 @@
                                         <td><div class="form-group">
                                                 <input type="number" class="form-control" name="qty" id="qty" style="width:100%;" onkeyup="jlhbarang()" disabled>
                                             </div></td>
-                                        <td><input type="text" class="form-control " name="diskon" style="pointer-events: none;" id="diskon"></td>
                                         <td><input type="text" class="form-control " name="jumlah" style="pointer-events: none;" id="jumlah"></td>
                                     <td colspan="2"><button class="btn btn-info btn-block" type="submit" disabled id="tbl">+</button></td>
                                     </form>
@@ -142,15 +149,12 @@
             document.getElementById("qty").disabled=false;
         });
     });
-    // function addrow() {
-    // document.getElementById("idbarang").value=23;
-    // document.getElementById("harga").value=10000;
-    // document.getElementById("qty").disabled=false;
-    // }
+    function idkustomer() {
+    document.getElementById("custid").value=Number(document.getElementById("kustomer").value);
+    }
 function jlhbarang(){
     document.getElementById("jumlah").value=Number(document.getElementById("harga").value)*Number(document.getElementById("qty").value);
     
-    document.getElementById("diskon").value='0.00';
     document.getElementById("tbl").disabled=false;
 }
 function tambah(){

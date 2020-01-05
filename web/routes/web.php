@@ -88,9 +88,10 @@ Route::middleware("auth")->group(function(){
     Route::resource('jual','JualController');
     Route::get('/item/jual/{iditem}','JualController@getjual');
     Route::get('/bayar','JualController@bayar')->name('jual.bayar');
+    Route::get('/jual/kembali','JualController@kembali')->name('jual.kembali');
     Route::get('/batal','JualController@batal')->name('jual.batal');
 
-    Route::post('/simpan','JualController@bayar')->name('jual.simpan');
+    Route::post('/simpan','JualController@simpan')->name('jual.simpan');
     Route::resource('supplier','SupplierController');
     Route::resource('user','UserController');
     route::get('user/simpan','UserController@simpan')->name('user.simpan');

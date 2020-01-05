@@ -7,6 +7,7 @@ use App\DetailJual;
 use App\Jual;
 use App\Tempdtljual;
 use App\Tempjual;
+use App\Jenisbayar;
 use App\Sifut;
 use Illuminate\Support\Facades\DB;
 
@@ -23,6 +24,7 @@ class JualController extends Controller
     public function index()
     {
         //
+        return view("penjualan.list");
     }
 
     /**
@@ -34,13 +36,16 @@ class JualController extends Controller
     {
         //
         DB::table('tbltempjual')->where('id',1)->update([
-            'jumlah'=>0]);
+            'jumlah'=>0,'user_id'=>6]);
         Tempdtljual::truncate();
         $row=1;
-        $data = Tempdtljual::all();
         $jual = Tempjual::find(1);
         $barang=Item::all();
-        return view("penjualan.detail",compact("barang","row","data","jual"));
+        $kustomer = Sifut::where('level','c')
+                    ->orderBy('name')
+                    ->get();
+        return view("penjualan.detail",compact("barang","row","jual","kustomer"));
+        
     }
 
     /**
@@ -53,6 +58,9 @@ class JualController extends Controller
     {
         //
         DB::table('tbltempjual')->increment('jumlah',$request->jumlah);
+        DB::table('tbltempjual')
+            ->where('id', 1)
+            ->update(['user_id' => $request->custid]);
         $dtljual = new Tempdtljual;
         $dtljual->jual_id = 1;
         $dtljual->item_id = $request->namabarang;
@@ -64,7 +72,10 @@ class JualController extends Controller
         $data = Tempdtljual::all();
         $jual = Tempjual::find(1);
         $barang=Item::all();
-        return view("penjualan.detail",compact("barang","row","data","jual"));
+        $kustomer = Sifut::where('level','c')
+                    ->orderBy('name')
+                    ->get();
+        return view("penjualan.detail",compact("barang","row","data","jual","kustomer"));
         
     }
 
@@ -117,11 +128,9 @@ class JualController extends Controller
         DB::table('tbltempjual')->where('id',1)->update([
             'jumlah'=>$jumlah]);
         Tempdtjual::destroy($id);
-        $row=1;
         $data = Tempdtljual::all();
-        $jual = Tempjual::find(1);
-        $barang=Item::all();
-        return view("penjualan.detail",compact("barang","row","data","jual"));
+        return redirect()->route("jual.index")
+            ->with(['data' => $data]);
     }
 
     public function getjual($itemid){
@@ -131,27 +140,55 @@ class JualController extends Controller
         $jual = Tempjual::find(1);
         return view("penjualan.bayar",compact("jual"));
     }
-    public function simpan(){
-        $tempjual = Tempjual::all();
+    public function simpan(Request $request){
+        // ambil data temporary
+        $tempjual = Tempjual::find(1);
         $tempdtljual = Tempdtljual::all();
 
+        // insert data jual
         $jual = new Jual;
-        $jual->user_id = 6;
+        $jual->user_id = $tempjual->user_id;
         $jual->tanggal = date('Y-m-d H:i:s');
         $jual->jumlah = $tempjual->jumlah;
         $jual->save();
         
-        foreach ($tempdtljual as $item){
-            $dtljual = new DetailJual;
-            $dtljual->jual_id = $jual->id;
-            $dtljual->item_id = $item->item_id;
-            $dtljual->qty = $item->qty;
-            $dtljual->total = $item->total;
-            $dtljual->save();
+        // insert data detailjual
+        foreach ($tempdtljual as $i => $item){
+            $dtljual[$i] = new DetailJual();
+            $dtljual[$i]->jual_id = $jual->id;
+            $dtljual[$i]->item_id = $item->item_id;
+            $dtljual[$i]->qty = $item->qty;
+            $dtljual[$i]->total = $item->total;
+            $dtljual[$i]->save();
+            // $dtljual[$i] = (new DetailJual())->forceCreate($item->only(['jual_id', 'item_id', 'qty','total']));
         }
-        
 
-        return redirect()->view("penjualan.list");
+        // insert data jenisbayar
+        if ($request->bayar>0){
+            $tunai= new Jenisbayar;
+            $tunai->jual_id = $jual->id;
+            $tunai->jenis = 't';
+            $tunai->jlh = $request->bayar-$request->kembalian;
+            $tunai->save();
+        }
+
+        if ($request->debit>0){
+            $debit= new Jenisbayar;
+            $debit->jual_id = $jual->id;
+            $debit->jenis = 'd';
+            $debit->jlh = $request->debit;
+            $debit->save();
+        }
+
+        if ($request->kredit>0){
+            $kredit= new Jenisbayar;
+            $kredit->jual_id = $jual->id;
+            $kredit->jenis = 'k';
+            $kredit->jlh = $request->kredit;
+            $kredit->save();
+        }
+
+        return redirect()->route("jual.store");
         
     }
     public function batal(){
@@ -160,5 +197,10 @@ class JualController extends Controller
         $jual = Tempjual::find(1);
         $barang=Item::all();
         return view("penjualan.detail",compact("barang","row","data","jual"));
+    }
+    public function kembali(){
+        $data = Tempdtljual::all();
+        return redirect()->route("jual.index")
+            ->with(['data' => $data]);
     }
 }

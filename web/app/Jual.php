@@ -20,4 +20,8 @@ class Jual extends Model
     {
         return $this->hasMany('App\DetailJual');
     }
+    public function jenisbayar()
+    {
+        return $this->hasMany('App\Jenisbayar');
+    }
 }
