@@ -62,7 +62,7 @@
                                     <th>Harga</th>
                                     <th style="width:9%;">@</th>
                                     <th>Jumlah</th>
-                                    <th colspan="2">Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>                
@@ -76,7 +76,15 @@
                                     <td>{{ $item->qty }}</td>
                                     <td>{{ $item->qty * $item->item->jual}}</td>
                                     
-                                    <td><a href="{{ route("jual.show",[$item->id]) }}" class="btn btn-warning btn-block"><i class="fa fa-pencil-alt"></i> Rubah</a></td>
+                                    {{-- <td><form action={{ route("jual.banyak",[$item->id]) }}
+                                    method="POST" autocomplete="off">
+                                    @csrf
+                                        <input type="hidden" id="banyakbarang" name="banyakbarang">
+                                        <button type="submit" class="btn btn-warning btn-block">
+                                            <i class="fa fa-pencil-alt"></i> Ubah</a>
+                                        </button>
+                                        </form>
+                                    --}}
                                     <td>
                                         <form action="{{ route("jual.destroy",[$item->id]) }}"
                                             method="POST">
@@ -84,7 +92,7 @@
                                             @csrf
                                             <button type="submit"
                                                 class="btn btn-danger btn-block">
-                                                <i class="fa fa-trash"></i> Hapus
+                                                <i class="fa fa-trash"></i>
                                             </button>
                                         </form>
                                     </td>
@@ -111,7 +119,7 @@
                                                 <input type="number" class="form-control" name="qty" id="qty" style="width:100%;" onkeyup="jlhbarang()" disabled>
                                             </div></td>
                                         <td><input type="text" class="form-control " name="jumlah" style="pointer-events: none;" id="jumlah"></td>
-                                    <td colspan="2"><button class="btn btn-info btn-block" type="submit" disabled id="tbl">+</button></td>
+                                    <td><button class="btn btn-info btn-block" type="submit" disabled id="tbl">+</button></td>
                                     </form>
                                     
                                 
@@ -157,6 +165,10 @@ function jlhbarang(){
     
     document.getElementById("tbl").disabled=false;
 }
+function ubahbanyak(){
+    document.getElementById("banyakbarang").value=Number(document.getElementById("banyakitem").value);
+}
+
 function tambah(){
     var table = document.getElementById("tabeldetail");
 // inisialisasi row

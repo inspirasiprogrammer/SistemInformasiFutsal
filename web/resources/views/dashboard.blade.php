@@ -123,7 +123,7 @@
                                     <tbody>
                                         <tr>
                                             <td>08.00</td>
-                                            <td><a href="{{route("contoh")}}" class="btn btn-success btn-block">Booked</a></td>
+                                            <td><a href="" class="btn btn-success btn-block">Booked</a></td>
                                             <td>Deni</td>
                                         </tr>                                    
                                         <tr>

@@ -27,7 +27,7 @@
                 <form action={{ isset($data)
                     ?route("supplier.update",[$data->id])
                     :route("supplier.store") }}
-    method="POST" autocomplete="off">
+                method="POST" autocomplete="off">
     @csrf
     @if (isset($data))
         @method("PUT")

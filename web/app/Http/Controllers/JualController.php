@@ -24,7 +24,8 @@ class JualController extends Controller
     public function index()
     {
         //
-        return view("penjualan.list");
+        $data = Jual::paginate(10);
+        return view("penjualan.list",compact("data"));
     }
 
     /**
@@ -127,10 +128,15 @@ class JualController extends Controller
         $jumlah=$temp->jumlah - $temp2->total;
         DB::table('tbltempjual')->where('id',1)->update([
             'jumlah'=>$jumlah]);
-        Tempdtjual::destroy($id);
+        Tempdtljual::destroy($id);
         $data = Tempdtljual::all();
-        return redirect()->route("jual.index")
-            ->with(['data' => $data]);
+        $row=1;
+        $jual = Tempjual::find(1);
+        $barang=Item::all();
+        $kustomer = Sifut::where('level','c')
+                    ->orderBy('name')
+                    ->get();
+        return view("penjualan.detail",compact("barang","row","jual","kustomer","data"));
     }
 
     public function getjual($itemid){
@@ -202,5 +208,16 @@ class JualController extends Controller
         $data = Tempdtljual::all();
         return redirect()->route("jual.index")
             ->with(['data' => $data]);
+    }
+    // public function editbanyak(Request $request,$id){
+    //     DB::table('tbltempdtljual')
+    //         ->where('id', $id)
+    //         ->update(['qty' => $request->banyakbarang]);
+    // }
+    public function deletejual($id){
+        DB::table('tbldetailjual')->where('jual_id', $id)->delete();
+        DB::table('tbljenisbayar')->where('jual_id', $id)->delete();
+        Jual::destroy($id);
+        return redirect()->route('jual.index');
     }
 }

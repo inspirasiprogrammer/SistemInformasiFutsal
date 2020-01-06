@@ -14,6 +14,7 @@ class CreateTbltempdtljual extends Migration
     public function up()
     {
         Schema::create('tbltempdtljual', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('jual_id');
             $table->foreign('jual_id')->references('id')->on('tbltempjual');
             $table->unsignedBigInteger('item_id');

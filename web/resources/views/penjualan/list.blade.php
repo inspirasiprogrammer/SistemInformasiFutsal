@@ -26,40 +26,21 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Waktu</th>
                             <th>Customer</th>
                             <th>Jumlah</th>
-                            <th colspan="2" width=25%>Action</th>
+                            <th width=25%>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><a href="">01</a></td>
-                            <td>08.00</td>
-                            <td></td>
-                            <td>120.000</td>
-                           
-                        <td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
-                        <td><a href="" class="btn btn-danger btn-block">Hapus</a></td>
-                        </tr>                  
-                        <tr>
-                            <td>02</td>
-                            <td>08.05</td>
-                            <td>Dennis</td>
-                            <td>150.000</td>
-                           
-                        <td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
-                        <td><a href="" class="btn btn-danger btn-block">Hapus</a></td>
-                        </tr>                  
-                        <tr>
-                            <td>03</td>
-                            <td>09.00</td>
-                            <td>TeamBuaya</td>
-                            <td>130.000</td>
-                           
-                        <td><a href="" class="btn btn-warning btn-block">Ubah</a></td>
-                        <td><a href="" class="btn btn-danger btn-block">Hapus</a></td>
-                        </tr>                  
+                        @foreach ($data as $item)
+                            <tr>                    
+                                <td>{{$item->id}}</td>
+                                <td>{{$item->user->name}}</td>
+                                <td>{{$item->jumlah}}</td>
+                                <td><a href="{{route('hapus.jual',[$item->id])}}" class="btn btn-danger btn-block">Hapus</a></td>
+                            </tr>
+                        @endforeach                  
+                                      
                     </tbody>
                     <tfoot>
                         <tr>
