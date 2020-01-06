@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <link rel="stylesheet" href="css/sifut.min.css">
+        <link rel="stylesheet" href="css/jquery.mobile.icons.min.css">
+        <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css">
+        <title>Futsal Mobile</title>
+    </head>
+    <body>
+        <div data-role="page" id="login">
+            <div data-role="header"><h1>Form Login</h1></div>
+            <div role="main" class="ui-content">
+                <div class="ui-field-contain">
+                    <label for="email">Email</label>
+                    <input type="email" name="email"
+                        placeholder="masukkan email">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="password">Password</label>
+                    <input type="password" name="password"
+                        placeholder="masukkan password">
+                </div>
+                <a href="#dashboard" class="ui-btn">Login</a>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <h3>STMIK IBBI</h3>
+            </div>
+        </div>
+        <div data-role="page" id="dashboard">
+            <div data-role="panel" id="menupanel"
+                data-position="left" data-display="overlay">
+                <ul data-role="listview">
+                    <li><h1>Menu</h1></li>
+                    <li><a href="#lapangan1">Lapangan A</a></li>
+                    <li><a href="#lapangan2">Lapangan B</a></li>
+                    <li><a href="#password">Ganti Password</a></li>
+                    <li><a href="#login">Logout</a></li>
+                </ul>
+            </div>
+            <div data-role="header">
+                <a href="#menupanel" class="ui-btn-left
+                    ui-btn ui-btn-inline 
+                    ui-corner-all ui-icon-bars 
+                    ui-btn-icon-left">Menu</a>
+                <h1>Dashboard</h1>
+                <a href="#login" class="ui-btn-right
+                    ui-btn ui-btn-inline
+                    ui-corner-all ui-icon-power
+                    ui-btn-icon-right">Logout</a>
+            </div>
+            <div class="ui-content">
+                <ul data-role="listview"
+                    data-inset="true">
+                    <li><a href="#bayarlapangan">
+                        <h2>Lapangan A</h2>
+                        <p>Slot 10.00 1 jam 3/1/2020</p>
+                        <span class="ui-li-count">Pending</span>
+                    </a></li>
+                    <li><a href="#lunaslapangan">
+                        <h2>Lapangan B</h2>
+                        <p>Slot 19.00 2 jam 2/1/2020</p>
+                        <span class="ui-li-count">Lunas</span>
+                    </a></li>
+                </ul>
+            </div>
+            <div data-role="footer"
+                data-position="fixed">
+                <h3>STMIK IBBI</h3>
+            </div>
+        </div>
+        <div data-role="page" id="lapangan1">
+            <div data-role="panel" id="menupanel"
+                data-position="left" data-display="overlay">
+                <ul data-role="listview">
+                    <li><h1>Menu</h1></li>
+                    <li><a href="#lapangan1">Lapangan A</a></li>
+                    <li><a href="#lapangan2">Lapangan B</a></li>
+                    <li><a href="#password">Ganti Password</a></li>
+                    <li><a href="#login">Logout</a></li>
+                </ul>
+            </div>
+            <div data-role="header">
+                <a href="#menupanel" class="ui-btn-left
+                    ui-btn ui-btn-inline 
+                    ui-corner-all ui-icon-bars 
+                    ui-btn-icon-left">Menu</a>
+                <h1>Lapangan A</h1>
+                <a href="#login" class="ui-btn-right
+                    ui-btn ui-btn-inline
+                    ui-corner-all ui-icon-power
+                    ui-btn-icon-right">Logout</a>
+            </div>
+            <div class="ui-content">
+                <div class="ui-field-contain">
+                    <label for="tanggal">Tanggal</label>
+                <input type="date" data-clear-btn="false" name="tanggal" id="tanggal" value="">
+                </div>
+                
+                <ul data-role="listview"
+                    data-filter="true"
+                    data-filter-placeholder="cari slot"
+                    data-inset="true">
+                    <li><a href="#booking">
+                        <h2>08.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>09.00</h2>
+                        <span class="ui-li-count">Booked</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>10.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>11.00</h2>
+                        <span class="ui-li-count">Pending</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>12.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>13.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>14.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>15.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>16.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>17.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>18.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>19.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>20.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>21.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>22.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    
+                </ul>
+            </div>
+            <div data-role="footer"
+                data-position="fixed">
+                <h3>STMIK IBBI</h3>
+            </div>
+        </div>
+        <div data-role="page" id="lapangan2">
+            <div data-role="panel" id="menupanel"
+                data-position="left" data-display="overlay">
+                <ul data-role="listview">
+                    <li><h1>Menu</h1></li>
+                    <li><a href="#lapangan1">Lapangan A</a></li>
+                    <li><a href="#lapangan2">Lapangan B</a></li>
+                    <li><a href="#password">Ganti Password</a></li>
+                    <li><a href="#login">Logout</a></li>
+                </ul>
+            </div>
+            <div data-role="header">
+                <a href="#menupanel" class="ui-btn-left
+                    ui-btn ui-btn-inline 
+                    ui-corner-all ui-icon-bars 
+                    ui-btn-icon-left">Menu</a>
+                <h1>Lapangan B</h1>
+                <a href="#login" class="ui-btn-right
+                    ui-btn ui-btn-inline
+                    ui-corner-all ui-icon-power
+                    ui-btn-icon-right">Logout</a>
+            </div>
+            <div class="ui-content">
+                <div class="ui-field-contain">
+                    <label for="tanggal">Tanggal</label>
+                <input type="date" data-clear-btn="false" name="tanggal" id="tanggal" value="">
+                </div>
+                
+                <ul data-role="listview"
+                    data-filter="true"
+                    data-filter-placeholder="cari slot"
+                    data-inset="true">
+                    <li><a href="#booking">
+                        <h2>08.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>09.00</h2>
+                        <span class="ui-li-count">Booked</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>10.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>11.00</h2>
+                        <span class="ui-li-count">Pending</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>12.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>13.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>14.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>15.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>16.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>17.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>18.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>19.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>20.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>21.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    <li><a href="#booking">
+                        <h2>22.00</h2>
+                        <span class="ui-li-count">Kosong</span>
+                    </a></li>
+                    
+                </ul>
+            </div>
+            <div data-role="footer"
+                data-position="fixed">
+                <h3>STMIK IBBI</h3>
+            </div>
+        </div>
+        <div data-role="page" id="password">
+            <div data-role="header">
+                <a href="" data-rel="back">Back</a>
+                <h1>Ganti Password</h1>
+            </div>
+            <div class="ui-content">
+                <div class="ui-field-contain">
+                    <label for="passwordlama">Password Lama</label>
+                    <input type="password" name="passwordlama">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="passwordbaru">Password Baru</label>
+                    <input type="password" name="passwordbaru">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="konfirmpassword">Konfirm Password</label>
+                    <input type="password" name="konfirmpassword" >
+                </div>
+                <button class="ui-btn">Simpan</button>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <h3>STMIK IBBI</h3>
+            </div>
+        </div>
+        <div data-role="page" id="booking">
+            <div data-role="header">
+                <a href="" data-rel="back">Back</a>
+                <h1>Booking</h1>
+            </div>
+            <div class="ui-content">
+                <ul data-role="listview" data-inset="true">
+                    <li>
+                        <label for="lama">Lama Pemesanan</label>
+                        <input type="number" data-clear-btn="true" name="lama" id="lama" value="">
+                        <a href="#dashboard"><button class="ui-btn">Kirim</button></a>
+                    </li>
+                </ul>   
+                
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <h3>STMIK IBBI</h3>
+            </div>
+        </div>
+        <div data-role="page" id="bayarlapangan">
+            <div data-role="header">
+                <a href="" data-rel="back">Back</a>
+                <h1>Bayar</h1>
+                <a href="#dashboard" class="ui-btn-right
+                    ui-btn ui-btn-inline
+                    ui-corner-all">Selesai</a>
+            </div>
+            <div class="ui-content">
+                <div class="ui-field-contain center-wrapper">
+                    <p>Anda telah memesan lapangan Slot 10.00 selama 1 jam</p>
+                    <p>Tanggal 3/1/2020</p>
+                    <p>Silahkan upload bukti pembayaran sebesar Rp 50.000</p>
+                    <p>Ke rekening Mandiri 111111111</p>
+                    <p>Atas nama FutsalEmerald </p>
+                </div>
+                <div class="ui-field-contain">
+                    <label for="file-1">Bukti pembayaran</label>
+                    <input type="file" data-clear-btn="true" name="file-1" id="file-1" value="">
+                </div>
+                
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <h3>STMIK IBBI</h3>
+            </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    </body>
+</html>
