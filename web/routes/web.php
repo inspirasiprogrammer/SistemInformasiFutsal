@@ -55,6 +55,7 @@ Route::middleware("auth")->group(function(){
     })->name("admin.beli.form");
     Route::resource('item','ItemController');
     Route::resource('jual','JualController');
+    Route::resource('beli','BeliController');
     // Route::post('/jual/banyak/{id}','JualController@editbanyak')
     //     ->name('jual.banyak');
     Route::get('/jual/hapusjual/{id}','JualController@deletejual')->name('hapus.jual');
