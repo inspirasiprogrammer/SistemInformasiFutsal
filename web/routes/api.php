@@ -20,5 +20,11 @@ Route::get('lapa/{idlapa}','API\TaskController@getlapangana');
 // http://127.0.0.1:8000/api/lapa/{lapa}
 Route::get('lapb/{idlapb}','API\TaskController@getlapanganb');
 // http://127.0.0.1:8000/api/lapb/{lapb}
+Route::get('detail/{idbukti}','API\TaskController@getdetail');
+// http://127.0.0.1:8000/api/detail/{idbukti}
 Route::get('dashboard/{id}','API\TaskController@getdashboard');
 // http://127.0.0.1:8000/api/dashboard/{id}
+Route::post('password','API\TaskController@postPassword');
+// http://127.0.0.1:8000/api/password
+Route::post('login','API\TaskController@postLogin');
+// http://127.0.0.1:8000/api/login

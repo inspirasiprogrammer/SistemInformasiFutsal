@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\LapaResource;
 use App\Http\Resources\LapbResource;
+use App\Http\Resources\BuktibResource;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\DashboardResource;
+
+use Illuminate\Support\Facades\Hash;
 
 class TaskController extends Controller
 {
@@ -33,21 +36,26 @@ class TaskController extends Controller
 
         return response()->json(new LapbResource($lapangan));
     }
+    public function getdetail($idbukti){
+        $buktib = \App\Buktib::find($idbukti);
+
+        return response()->json(new BuktibResource($buktib));
+    }
 
     
 
-    public function postStatus(Request $request){
-        $request->validate([
-            "idkerja" => "required"
-        ]);
+    // public function postStatus(Request $request){
+    //     $request->validate([
+    //         "idkerja" => "required"
+    //     ]);
 
-        Task::where("id",$request->idkerja)
-            ->update(["status" => "sel"]);
+    //     Task::where("id",$request->idkerja)
+    //         ->update(["status" => "sel"]);
 
-        return response()->json([
-            "status" => true,
-        ]);
-    }
+    //     return response()->json([
+    //         "status" => true,
+    //     ]);
+    // }
 
    
 

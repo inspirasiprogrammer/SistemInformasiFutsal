@@ -15,5 +15,9 @@ class Item extends Model
     {
         return $this->belongsTo('App\jenis');
     }
+    public function buktib()
+    {
+        return $this->hasMany('App\Buktib');
+    }
 }
 
