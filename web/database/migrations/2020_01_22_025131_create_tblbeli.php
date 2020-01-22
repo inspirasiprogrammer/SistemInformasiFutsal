@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTbldetailbeli extends Migration
+class CreateTblbeli extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateTbldetailbeli extends Migration
      */
     public function up()
     {
-        Schema::create('tbldetailbeli', function (Blueprint $table) {
+        Schema::create('tblbeli', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('beli_id');
-            $table->foreign('beli_id')->references('id')->on('tblbeli');
-            $table->unsignedBigInteger('item_id');
-            $table->foreign('item_id')->references('id')->on('tblitem');
-            $table->integer('qty');
+            $table->unsignedBigInteger('supplier_id');
+            $table->foreign('supplier_id')->references('id')->on('tblsupplier');
+            $table->date('tanggal');
             $table->integer('jumlah');
             $table->timestamps();
         });
@@ -32,6 +30,6 @@ class CreateTbldetailbeli extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbldetailbeli');
+        Schema::dropIfExists('tblbeli');
     }
 }

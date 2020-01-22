@@ -46,7 +46,7 @@ Route::middleware("auth")->group(function(){
         return view('admin.sewa.form');
     })->name("admin.lapangan.sewa");
     Route::get('beli/list', "KasirController@belilist")->name("beli.list");
-    Route::get('beli/form', "KasirController@beliform")->name("beli.form");
+    
     Route::get('/admin/beli/list', function(){
         return view('admin.pembelian.list');
     })->name("admin.beli.list");
@@ -56,10 +56,13 @@ Route::middleware("auth")->group(function(){
     Route::resource('item','ItemController');
     Route::resource('jual','JualController');
     Route::resource('beli','BeliController');
+    Route::get('/item/beli/{iditem}','BeliController@getbeli');
+    Route::get('beli/simpan','BeliController@simpan')->name('beli.simpan');
     // Route::post('/jual/banyak/{id}','JualController@editbanyak')
     //     ->name('jual.banyak');
     Route::get('/jual/hapusjual/{id}','JualController@deletejual')->name('hapus.jual');
     Route::get('/item/jual/{iditem}','JualController@getjual');
+    
     Route::get('/bayar','JualController@bayar')->name('jual.bayar');
     Route::get('/jual/kembali','JualController@kembali')->name('jual.kembali');
     Route::get('/batal','JualController@batal')->name('jual.batal');

@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class DetailBeli extends Model
 {
     //
-    protected $table="tbldetailjual";
+    protected $table="tbldtlbeli";
 
-    protected $fillable = ['jual_id','item_id','qty','total'];
+    protected $fillable = ['beli_id','item_id','qty','total'];
 
-    public function jual()
+    public function beli()
     {
-        return $this->belongsTo('App\Jual');
+        return $this->belongsTo('App\Beli');
     }
     public function item()
     {

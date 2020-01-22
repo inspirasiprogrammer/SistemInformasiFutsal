@@ -9,11 +9,11 @@ class Beli extends Model
     //
     protected $table = "tblbeli";
 
-    protected $fillable = ['supplier_id','tanggal','total','kwitansi'];
+    protected $fillable = ['supplier_id','tanggal','jumlah'];
 
-    public function user()
+    public function supplier()
     {
-        return $this->belongsTo('App\Sifut');
+        return $this->belongsTo('App\Supplier');
     }
 
     public function detailbeli()

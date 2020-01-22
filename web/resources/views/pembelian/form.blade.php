@@ -27,12 +27,14 @@
                         <div class="float-left">12 November 2019</div>
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
-                        <div class="float-left">Naiki</div>
-                    </div>
-                    <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
-                        <div class="float-left"><input type="text" placeholder="Kwitansi"></div>
-                    </div>
-                    <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
+                        <div class="float-left">
+                            <select class="select2" data-placeholder="Nama Kustomer" style="width: 100%;"  id="kustomer" name="kustomer" onchange="idkustomer()">
+                                @foreach ($supplier as $item)
+                                        <option value="{{ $item->id }}" >
+                                        {{ $item->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
                         <div class="float-left">10.05 Wib</div>
@@ -47,84 +49,104 @@
                             <th>Nama</th>
                             <th>Harga</th>
                             <th style="width:7%;">@</th>
-                            <th style="width:10%;">Diskon</th>
                             <th>Jumlah</th>
-                            <th>Hapus</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>12</td>
-                            <td>Baju</td>
-                            <td>40.000</td>
-                            <td>20</td>
-                            <td>0.00</td>
-                            <td>800.000</td>
-                        <td><a href="" class="btn btn-danger btn-block">X</a></td>
-                        </tr>                  
-                        <tr>
-                            <td>13</td>
-                            <td>Celana</td>
-                            <td>30.000</td>
-                            <td>20</td>
-                            <td>0.00</td>
-                            <td>600.000</td>
-                        <td><a href="" class="btn btn-danger btn-block">X</a></td>
-                        </tr>                  
-                        <tr>
-                            <td></td>
+                            @if (isset($data))
+                            @foreach ($data as $item)
+                                <tr>
+                                    <td>{{ $item->item->id }}</td>
+                                    <td>{{ $item->item->nama }}</td>
+                                    <td>{{ $item->item->beli }}</td>
+                                    <td>{{ $item->qty }}</td>
+                                    <td>{{ $item->qty * $item->item->beli}}</td>
+                                    
+                                   
+                                    <td>
+                                        <form action="{{ route("beli.destroy",[$item->id]) }}"
+                                            method="POST">
+                                            @method("DELETE")
+                                            @csrf
+                                            <button type="submit"
+                                                class="btn btn-danger btn-block">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach  
+                            @endif
+                                 
+                        <form action="{{ route('beli.store') }}" method="POST" autocomplete="off">
+                            @csrf
+                        <td><input type="hidden" id="supid" name="supid" value="6">
+                                <input type="text" class="form-control " name="idbarang" style="pointer-events: none;" id="idbarang"></td>
                             <td>
                                 <div class="form-group">
-                                    <select class="select2" multiple="multiple" data-placeholder="Nama Barang" style="width: 100%;">
-                                        <option>Celana</option>
-                                        <option>Gatorite</option>
-                                        <option>Lapangan A</option>
-                                        <option>Lapangan B</option>
-                                        <option>Sepatu</option>
-                                        <option>Seragam</option>
-                                        <option>Pokari Set</option>
+                                    <select class="select2" data-placeholder="Nama Barang" style="width: 100%;"  id="namabarang" name="namabarang">
+                                        @foreach ($barang as $item)
+                                            <option value="{{ $item->id }}">
+                                            {{ $item->nama }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </td>
-                            <td></td>
+                            <td><input type="text" class="form-control " name="harga" style="pointer-events: none;" id="harga"></td>
                             <td><div class="form-group">
-                                    <input type="number" style="width:100%;">
+                                    <input type="number" class="form-control" name="qty" id="qty" style="width:100%;" onkeyup="jlhbarang()" disabled>
                                 </div></td>
-                            <td></td>
-                            <td></td>
-                        <td><a href="" class="btn btn-info btn-block">+</a></td>
-                        </tr>                  
+                            <td><input type="text" class="form-control " name="jumlah" style="pointer-events: none;" id="jumlah"></td>
+                        <td><button class="btn btn-info btn-block" type="submit" disabled id="tbl">+</button></td>
+                        </form>              
                                         
                     </tbody>
                     <tfoot>
-                        <tr>
-                            <td colspan="2"></td>
-                            <td colspan="2">Pajak</td>
-                            <td>
-                                <input type="text" placeholder="%" style="width:100%;">
-                            </td>
-                            <td colspan="2">0</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"></td>
-                            <td colspan="2">Diskon</td>
-                            <td>
-                                <input type="text" placeholder="%" style="width:100%;">
-                            </td>
-                            <td colspan="2">0</td>
-                        </tr>
+                       
                         <tr>
                             <td colspan="2"></td>
                             <td colspan="3">Total</td>
-                            <td colspan="2">1.400.000</td>
+                            <td colspan="2">{{ $jumlah }}</td>
                         </tr>
                     </tfoot>
                     
                 </table>
-                <a href="" class="btn btn-success">Simpan</a>
+                <a href="{{ route("beli.simpan") }}" class="btn btn-success">Simpan</a>
             </div>
         </div>
     </section>
 </div>
 
 @endsection
+
+@push('scripts')
+ <script>
+    $(document).ready(function(){
+            $('select#namabarang').change(function(){
+                var itemid=$(this).val();
+                $.get('/item/beli/'+itemid,function(data)
+                {
+                    $("input[name='harga']").val(data.beli);
+                    $("input[name='namaitem']").val(data.nama);
+                },'json');
+                document.getElementById("idbarang").value=document.getElementById("namabarang").value
+                document.getElementById("qty").disabled=false;
+            });
+        });
+        // function idkustomer() {
+        // document.getElementById("custid").value=Number(document.getElementById("kustomer").value);
+        // }
+    function jlhbarang(){
+        document.getElementById("jumlah").value=Number(document.getElementById("harga").value)*Number(document.getElementById("qty").value);
+        
+        document.getElementById("tbl").disabled=false;
+    }
+    function ubahbanyak(){
+        document.getElementById("banyakbarang").value=Number(document.getElementById("banyakitem").value);
+    }
+
+    
+</script>
+@endpush

@@ -22,7 +22,7 @@
         <div class="card-header"><h4>List Pembelian</h4></div>
             <div class="card-body">
                 <table class="table table-bordered table-striped">
-                    <a href="{{ route('beli.form') }}" class="btn btn-success float-right mb-2">+</a>
+                    <a href="{{ route('beli.create') }}" class="btn btn-success float-right mb-2">+</a>
             </div>
         <thead>
             <tr>
