@@ -9,6 +9,7 @@ use App\Http\Resources\LapbResource;
 use App\Http\Resources\BookingResource;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\DashboardResource;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -21,15 +22,65 @@ class TaskController extends Controller
         return response()->json($data);
     }
 
-    public function getlapangana($idlapa){
-        $lapangan= \App\Lapa::find($idlapa);
+    public function getlapangana(){
+        // $booking= \App\booking::where("id",$id)
+        //             ->first();
+        $booking= \App\booking::where("item_id",6)
+                        
+                        ->get();
+        $n=0;
+        $count=count($booking);
+        $koleksi=[];
+        $data=array('koleksi');
+        for ($i = 0; $i <= 14; $i++) {
+            if ($booking[$n]->sesi==$i+8) {
+                $data[$i]=[
+                    "status"=>$booking[$n]->status,
+                    "sesi"=>$i+8
+                ];
+                if ($n<($count-1)){
+                    $n=$n+1;
+                }
+                
+            } else {
+                $data[$i]=[
+                    "status"=>"k",
+                    "sesi"=>$i+8
+                ];
+            }
+            
+        }
+        
 
-        return response()->json(new LapaResource($lapangan));
+        return response()->json($data);
     }
-    public function getlapanganb($idlapb){
-        $lapangan= \App\Lapb::find($idlapb);
+    public function getlapanganb(){
+        $booking= \App\booking::where("item_id",5)
+                        ->get();
+        $n=0;
+        $count=count($booking);
+        $koleksi=[];
+        $data=array('koleksi');
+        for ($i = 0; $i <= 14; $i++) {
+            if ($booking[$n]->sesi==$i+8) {
+                $data[$i]=[
+                    "status"=>$booking[$n]->status,
+                    "sesi"=>$i+8
+                ];
+                if ($n<($count-1)){
+                    $n=$n+1;
+                }
+                
+            } else {
+                $data[$i]=[
+                    "status"=>"k",
+                    "sesi"=>$i+8
+                ];
+            }
+            
+        }
 
-        return response()->json(new LapbResource($lapangan));
+        return response()->json($data);
     }
     public function getdetailbooking($idbooking){
         $booking = \App\booking::find($idbooking);
@@ -37,22 +88,24 @@ class TaskController extends Controller
         return response()->json(new BookingResource($booking));
     }
 
-    
+    public function postFilebukti(Request $request){
+        if($request->hasFile("filebukti")){
+            $booking = \App\booking::find($request->idbooking);
+            Storage::delete("/public/buktipembayaran".$booking->filename);
+            $fullpath = $request->file("filebukti")
+                        ->store("/public/buktipembayaran");
+            
+            $filename = explode("/",$fullpath)[2];
 
-    // public function postStatus(Request $request){
-    //     $request->validate([
-    //         "idkerja" => "required"
-    //     ]);
+            $booking->filename = $filename;
+            $booking->save();
+        }
 
-    //     Task::where("id",$request->idkerja)
-    //         ->update(["status" => "sel"]);
-
-    //     return response()->json([
-    //         "status" => true,
-    //     ]);
-    // }
-
-   
+        return response()->json([
+            "status" => true,
+            "profilepic" => $filename
+        ]);
+    }
 
     public function postPassword(Request $request){
         $request->validate([
@@ -63,6 +116,22 @@ class TaskController extends Controller
         $user = \App\Sifut::find($request->idcustomer);
         $user->password = Hash::make($request->passwordbaru);
         $user->save();
+
+        return response()->json([
+            "status" => true
+        ]);
+    }
+
+    public function postBooking(Request $request){
+
+        $booking = new \App\booking;
+        $booking->item_id = $request->lapangan;
+        $booking->user_id = $request->idcustomer;
+        $booking->tanggal = date('Y-m-d');
+        $booking->sesi = $request->sesi;
+        $booking->lama = $request->lama;
+        $booking->status = 'p';
+        $booking->save();
 
         return response()->json([
             "status" => true
@@ -80,7 +149,8 @@ class TaskController extends Controller
                         ->first();
 
         if($customer){
-            if(\Hash::check($request->password,$customer->password)){
+            // if(\Hash::check($request->password,$customer->password)){
+            if($request->password==$customer->password){
                 return response()->json([
                     "status" => true,
                     "idcustomer" => $customer->id
@@ -93,27 +163,5 @@ class TaskController extends Controller
         ]);
     }
 
-    // public function postLogin(Request $request){
-    //     $request->validate([
-    //         "email" => "required",
-    //         "password" => "required"
-    //     ]);
-
-    //     $customer = \App\Sifut::where("email",$request->email)
-    //                     ->select("id,password")
-    //                     ->first();
-
-    //     if($customer){
-    //         if(\Hash::check($request->password,$user->password)){
-    //             return response()->json([
-    //                 "status" => true,
-    //                 "idcustomer" => $user->id
-    //             ]);
-    //         }
-    //     }
-
-    //     return response()->json([
-    //         "status" => false
-    //     ]);
-    // }
+   
 }

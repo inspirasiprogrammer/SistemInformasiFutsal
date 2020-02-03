@@ -16,9 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('lapa/{idlapa}','API\TaskController@getlapangana');
-// http://127.0.0.1:8000/api/lapa/{lapa}
-Route::get('lapb/{idlapb}','API\TaskController@getlapanganb');
+Route::get('lapa','API\TaskController@getlapangana');
+// http://127.0.0.1:8000/api/lapa/{sesi}
+Route::get('lapb','API\TaskController@getlapanganb');
 // http://127.0.0.1:8000/api/lapb/{lapb}
 Route::get('detail/{idbooking}','API\TaskController@getdetailbooking');
 // http://127.0.0.1:8000/api/detail/{idbooking}
@@ -30,3 +30,7 @@ Route::post('login','API\TaskController@postLogin');
 // http://127.0.0.1:8000/api/login
 Route::post('password','API\TaskController@postPassword');
 // http://127.0.0.1:8000/api/password
+Route::post('filebukti','API\TaskController@postFilebukti');
+// http://127.0.0.1:8000/api/filebukti
+Route::post('booking','API\TaskController@postBooking');
+// http://127.0.0.1:8000/api/booking
