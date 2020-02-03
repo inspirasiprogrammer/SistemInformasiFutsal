@@ -47,12 +47,13 @@ Route::middleware("auth")->group(function(){
     })->name("admin.lapangan.sewa");
     Route::get('beli/list', "KasirController@belilist")->name("beli.list");
     
-    Route::get('/admin/beli/list', function(){
-        return view('admin.pembelian.list');
-    })->name("admin.beli.list");
-    Route::get('/admin/beli/form', function(){
-        return view('admin.pembelian.form');
-    })->name("admin.beli.form");
+    // Route::get('/admin/beli/list', function(){
+    //     return view('admin.pembelian.list');
+    // })->name("admin.beli.list");
+    // Route::get('/admin/beli/form', function(){
+    //     return view('admin.pembelian.form');
+    // })->name("admin.beli.form");
+    
     Route::resource('item','ItemController');
     Route::resource('jual','JualController');
     Route::resource('beli','BeliController');

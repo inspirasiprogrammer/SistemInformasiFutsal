@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\LapaResource;
 use App\Http\Resources\LapbResource;
-use App\Http\Resources\BuktibResource;
+use App\Http\Resources\BookingResource;
 use App\Http\Resources\UserResource;
 use App\Http\Resources\DashboardResource;
 
@@ -15,15 +15,10 @@ use Illuminate\Support\Facades\Hash;
 class TaskController extends Controller
 {
     //
-    public function getdashboard($id){
-        $buktia = \App\Buktia::where("user_id", $id)
-                    ->get()->toArray();
-        $buktib = \App\Buktib::where("user_id", $id)
-                    ->get()->toArray();
-        $merged = array_merge($buktia,$buktib);
-
-
-        return response()->json($merged);
+    public function getdashboard($idcustomer){
+        $data = \App\booking::where("user_id",$idcustomer)
+                    ->get();
+        return response()->json($data);
     }
 
     public function getlapangana($idlapa){
@@ -36,10 +31,10 @@ class TaskController extends Controller
 
         return response()->json(new LapbResource($lapangan));
     }
-    public function getdetail($idbukti){
-        $buktib = \App\Buktib::find($idbukti);
+    public function getdetailbooking($idbooking){
+        $booking = \App\booking::find($idbooking);
 
-        return response()->json(new BuktibResource($buktib));
+        return response()->json(new BookingResource($booking));
     }
 
     
@@ -61,11 +56,11 @@ class TaskController extends Controller
 
     public function postPassword(Request $request){
         $request->validate([
-            "iduser" => "required|exists:users,id",
+            "idcustomer" => "required|exists:users,id",
             "passwordbaru" => "required|confirmed"
         ]);
 
-        $user = \App\Sifut::find($request->iduser);
+        $user = \App\Sifut::find($request->idcustomer);
         $user->password = Hash::make($request->passwordbaru);
         $user->save();
 
@@ -80,14 +75,15 @@ class TaskController extends Controller
             "password" => "required"
         ]);
 
-        $user = \App\Sifut::where("email",$request->email)
-                        ->select("password")
+        $customer = \App\Sifut::where("email",$request->email)
+                        ->selectRaw("id,password")
                         ->first();
 
-        if($user){
-            if(\Hash::check($request->password,$user->password)){
+        if($customer){
+            if(\Hash::check($request->password,$customer->password)){
                 return response()->json([
-                    "status" => true
+                    "status" => true,
+                    "idcustomer" => $customer->id
                 ]);
             }
         }
@@ -96,4 +92,28 @@ class TaskController extends Controller
             "status" => false
         ]);
     }
+
+    // public function postLogin(Request $request){
+    //     $request->validate([
+    //         "email" => "required",
+    //         "password" => "required"
+    //     ]);
+
+    //     $customer = \App\Sifut::where("email",$request->email)
+    //                     ->select("id,password")
+    //                     ->first();
+
+    //     if($customer){
+    //         if(\Hash::check($request->password,$user->password)){
+    //             return response()->json([
+    //                 "status" => true,
+    //                 "idcustomer" => $user->id
+    //             ]);
+    //         }
+    //     }
+
+    //     return response()->json([
+    //         "status" => false
+    //     ]);
+    // }
 }

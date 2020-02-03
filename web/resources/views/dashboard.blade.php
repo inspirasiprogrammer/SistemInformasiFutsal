@@ -55,7 +55,7 @@
                         <div class="icon">
                             <i class="fas fa-shopping-cart"></i>
                         </div>
-                        <a href="{{route('beli.form')}}" class="small-box-footer">Masuk <i
+                        <a href="{{route('beli.create')}}" class="small-box-footer">Masuk <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
