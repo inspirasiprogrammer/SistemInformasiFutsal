@@ -28,7 +28,7 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
@@ -51,7 +51,7 @@
                     <input type="password" name="password"
                         placeholder="masukkan password">
                 </div>
-                <a href="#dashboard" class="ui-btn">Login</a>
+                <button class="ui-btn" id="btnlogin">Login</button>
             </div>
             <div data-role="footer" data-position="fixed">
                 <h3>STMIK IBBI</h3>
@@ -81,17 +81,7 @@
             </div>
             <div class="ui-content">
                 <ul data-role="listview"
-                    data-inset="true">
-                    <li><a href="#bayarlapangan">
-                        <h2>Lapangan A</h2>
-                        <p>Slot 10.00 1 jam 3/1/2020</p>
-                        <span class="ui-li-count">Pending</span>
-                    </a></li>
-                    <li><a href="#lunaslapangan">
-                        <h2>Lapangan B</h2>
-                        <p>Slot 19.00 2 jam 2/1/2020</p>
-                        <span class="ui-li-count">Lunas</span>
-                    </a></li>
+                    data-inset="true" id="daftarbooking">
                 </ul>
             </div>
             <div data-role="footer"
@@ -317,7 +307,7 @@
                     <label for="konfirmpassword">Konfirm Password</label>
                     <input type="password" name="konfirmpassword" >
                 </div>
-                <button class="ui-btn">Simpan</button>
+                <button class="ui-btn" id="btnRubahPassword">Simpan</button>
             </div>
             <div data-role="footer" data-position="fixed">
                 <h3>STMIK IBBI</h3>
@@ -356,18 +346,9 @@
                     ui-corner-all">Selesai</a>
             </div>
             <div class="ui-content">
-                <div class="ui-field-contain center-wrapper">
-                    <p>Anda telah memesan lapangan Slot 10.00 selama 1 jam</p>
-                    <p>Tanggal 3/1/2020</p>
-                    <p>Silahkan upload bukti pembayaran sebesar Rp 50.000</p>
-                    <p>Ke rekening Mandiri 111111111</p>
-                    <p>Atas nama FutsalEmerald </p>
-                </div>
-                <div class="ui-field-contain">
-                    <label for="file-1">Bukti pembayaran</label>
-                    <input type="file" data-clear-btn="true" name="file-1" id="file-1" value="">
-                </div>
-                
+                <ul data-role="listview"
+                    data-inset="true" id="pesanbooking">
+                </ul>
             </div>
             <div data-role="footer" data-position="fixed">
                 <h3>STMIK IBBI</h3>
@@ -376,5 +357,124 @@
         <script type="text/javascript" src="cordova.js"></script>
         <script src="js/jquery-1.11.1.min.js"></script>
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script>
+            $("#btnlogin").on("click",function(){
+                var email = $("input[name='email']").val();
+                var password = $("input[name='password']").val();
+
+                $.post("http://127.0.0.1:8000/api/login",
+                        {email: email,password: password},
+                function(data){
+                    if(data.status == true){
+                        $(":mobile-pagecontainer")
+                            .pagecontainer("change","#dashboard");
+                        localStorage.setItem("customer",data.idcustomer);
+                    }else{
+                        alert("Email Password Salah");
+                    }
+                },"json");
+            });
+
+            $(document).on("pageshow","#dashboard",function(){
+                var idcustomer = localStorage.getItem("customer");
+
+                $.get("http://127.0.0.1:8000/api/dashboard/"+idcustomer,
+                function(data){
+                    var ul = $("#daftarbooking");
+
+                    ul.empty();
+                    $.map(data,function(value,key){
+                        ul.append("<li><a href='#bayarlapangan' data-id='"+ value.id +"'>" +
+                                        "<h2>"+ konversiLapangan(value.item_id) +"</h2>" +
+                                        "<p>Slot "+ value.sesi +".00 "+value.lama+" jam "+value.tanggal+"</p>" +
+                                        "<span class='ui-li-count'>"+ konversiStatus(value.status) +"</span>" +
+                                    "</a></li>");
+                    });
+                    ul.listview("refresh");
+                },"json");
+            });
+
+            $("ul#daftarbooking").on("click","a",function(e){
+                e.preventDefault();
+                var idbooking = $(this).data("id");
+
+                $.get("http://127.0.0.1:8000/api/detail/"+idbooking,
+                function(data){
+
+                    var ul = $("#pesanbooking");
+                    ul.empty();
+
+                    $.map(data,function(value,key){
+                        ul.append("<li><p>Anda telah memesan lapangan Slot "+value.sesi+".00 selama"+value.lama+" jam</p>"+
+                                        "<p>Tanggal "+ value.tanggal +"</p>" +
+                                        "<p>Silahkan upload bukti pembayaran sebesar Rp "+value.harga+"</p>" +
+                                        "<p>Ke rekening Mandiri 111111111 </p>" +
+                                        "<p>Atas nama FutsalEmerald </p>" +
+                                    "</li>");
+                    });
+                    ul.listview("refresh");
+
+                    // ul.append("<li>" +
+                    //                 "<label for='filebukti'>Bukti Pembayaran</label>" + 
+                    //                 "<input type='file' data-clear-btn='true' name='filebukti' id='filebukti' value=''>" +
+                    //             "</li>")
+                    //     .enhanceWithin();
+                },"json");
+
+                $(":mobile-pagecontainer")
+                            .pagecontainer("change","#bayarlapangan");
+            });
+
+            $("#btnRubahPassword").on("click",function(){
+                var passwordbaru = 
+                    $("input[name='passwordbaru']").val();
+                var passwordbaru_confirmation = 
+                    $("input[name='konfirmpassword']").val(); 
+                var idcustomer = localStorage.getItem("customer");
+
+                $.post("http://127.0.0.1:8000/api/password",
+                {"idcustomer":idcustomer,"passwordbaru": passwordbaru,"passwordbaru_confirmation": passwordbaru_confirmation },
+                function(data){
+                    if(data.status==true){
+                        alert("Berhasil Rubah Password");
+                        localStorage.removeItem("customer");
+                        $(":mobile-pagecontainer")
+                                    .pagecontainer("change","#login");
+                    }
+                },"json");
+            });
+
+            function konversiLapangan(item_id){
+                var namaitem="";
+
+                switch (item_id) {
+                    case 3:
+                        namaitem = "Lapangan A"; break;
+                    case 4:
+                        namaitem = "Lapangan B"; break;
+                    default:
+                        namaitem = "Tidak Terdaftar"; break;
+                }
+
+                return namaitem;
+            }
+
+            function konversiStatus(status){
+                var namastatus="";
+
+                switch (status) {
+                    case "k":
+                        namastatus = "Kosong"; break;
+                    case "p":
+                        namastatus = "Pending"; break;
+                    case "b":
+                        namastatus = "Booking"; break;
+                    default:
+                        namastatus = "Tidak Terdaftar"; break;
+                }
+
+                return namastatus;
+            }
+        </script>
     </body>
 </html>
