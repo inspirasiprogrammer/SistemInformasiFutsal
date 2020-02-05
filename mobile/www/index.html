@@ -206,6 +206,34 @@
                 <h3>STMIK IBBI</h3>
             </div>
         </div>
+
+        <div data-role="page" id="bookingtest">
+            <div data-role="header">
+                <a href="" data-rel="back">Back</a>
+                <h1>Booking</h1>
+            </div>
+            <div class="ui-content">
+                <input type="hidden" name="idbookingtest">
+                <input type="hidden" name="lapangantest">
+                <ul data-role="listview"
+                    data-inset="true">
+                    <li><label for='pilihlama'>Lama Pemesanan:</label>
+                        <select name='pilihlamatest' id='pilihlamatest'>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='3'>3</option>
+                        <option value='4'>4</option>
+                        </select>
+                        <button class='ui-btn' name='btnbooking' id='btnbooking'>Kirim</button>
+                        </li>
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <h3>STMIK IBBI</h3>
+            </div>
+        </div>
+
+        
         <div data-role="page" id="bayarlapangan">
             <div data-role="header">
                 <a href="" data-rel="back">Back</a>
@@ -314,7 +342,7 @@
 
                     ul.empty();
                     $.map(data,function(value,key){
-                        ul.append("<li><a href='#booking' data-id='"+ value.sesi +"'>" +
+                        ul.append("<li><a href='#bookingtest' data-id='"+ value.sesi +"'>" +
                                         "<h2>"+value.sesi+".00</h2>" +
                                         "<span class='ui-li-count'>"+ konversiStatus(value.status) +"</span>" +
                                     "</a></li>");
@@ -324,25 +352,13 @@
             });
 
             $("ul#daftarlapa").on("click","a",function(e){
-                // e.preventDefault();
                 var idbooking = $(this).data("id");
-                    var ul = $("#pesanlapangan");
-                    ul.empty();
-                    ul.append("<li><label for='pilihlama'>Lama Pemesanan:</label>"+
-                        "<select name='pilihlama' id='pilihlama'>" +
-                        "<option value='1'>1</option>" +
-                        "<option value='2'>2</option>" +
-                        "<option value='3'>3</option>" +
-                        "<option value='4'>4</option>" +
-                        "</select>" +
-                        "<button class='ui-btn' data-item='6' data-idbooking='"+ idbooking +"' name='btnpesanlapangans' id='btnpesanlapangans'>Kirim</button>" +
-                        "</li>");
-                    ul.listview("refresh");
-
+                    localStorage.setItem("sesibooking",idbooking);
+                    localStorage.setItem("idlapangan",3);
                     
 
                 $(":mobile-pagecontainer")
-                            .pagecontainer("change","#booking");
+                            .pagecontainer("change","#bookingtest");
             });
 
             $(document).on("pageshow","#lapangan2",function(){
@@ -353,7 +369,7 @@
 
                     ul.empty();
                     $.map(data,function(value,key){
-                        ul.append("<li><a href='#booking' data-id='"+ value.sesi +"'>" +
+                        ul.append("<li><a href='#bookingtest' data-id='"+ value.sesi +"'>" +
                                         "<h2>"+value.sesi+".00</h2>" +
                                         "<span class='ui-li-count'>"+ konversiStatus(value.status) +"</span>" +
                                     "</a></li>");
@@ -364,24 +380,12 @@
             $("ul#daftarlapb").on("click","a",function(e){
                 // e.preventDefault();
                 var idbooking = $(this).data("id");
-                    var ul = $("#pesanlapangan");
-                    ul.empty();
-
-                    ul.append("<li><label for='pilihlama'>Lama Pemesanan:</label>"+
-                        "<select name='pilihlama' id='pilihlama'>" +
-                        "<option value='1'>1</option>" +
-                        "<option value='2'>2</option>" +
-                        "<option value='3'>3</option>" +
-                        "<option value='4'>4</option>" +
-                        "</select>" +
-                        "<a href='#dashboard'><button class='ui-btn' data-item='5' data-idbooking='"+ idbooking +"' id='btnpesanlapangan' name='btnpesanlapangan'>Kirim</button></a>" +
-                        "</li>");
-                    ul.listview("refresh");
-
+                localStorage.setItem("sesibooking",idbooking);
+                localStorage.setItem("idlapangan",4);
                     
 
                 $(":mobile-pagecontainer")
-                            .pagecontainer("change","#booking");
+                            .pagecontainer("change","#bookingtest");
             });
 
             $("ul#pesanlapangan").on("click","#btnpesanlapangan",function(){
@@ -394,6 +398,23 @@
                         {lama: lama,sesi: sesi,lapangan: lapangan, idcustomer: idcustomer},
                 function(data){
                     if(data.status == true){
+                        $(":mobile-pagecontainer")
+                            .pagecontainer("change","#dashboard");
+                    }
+                },"json");
+            });
+
+            $("#btnbooking").on("click",function(){
+                var lama = $("select[name='pilihlamatest']").val();
+                var sesi = localStorage.getItem("sesibooking");
+                var lapangan = localStorage.getItem("idlapangan");
+                var idcustomer = localStorage.getItem("customer");
+                $.post("http://127.0.0.1:8000/api/booking",
+                        {lama: lama,sesi: sesi,lapangan: lapangan, idcustomer: idcustomer},
+                function(data){
+                    if(data.status == true){
+                        localStorage.removeItem("idlapangan");
+                        localStorage.removeItem("sesibooking");
                         $(":mobile-pagecontainer")
                             .pagecontainer("change","#dashboard");
                     }
@@ -444,9 +465,9 @@
                 var namaitem="";
 
                 switch (item_id) {
-                    case 6:
+                    case 3:
                         namaitem = "Lapangan A"; break;
-                    case 5:
+                    case 4:
                         namaitem = "Lapangan B"; break;
                     default:
                         namaitem = "Tidak Terdaftar"; break;

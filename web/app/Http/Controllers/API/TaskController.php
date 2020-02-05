@@ -25,7 +25,7 @@ class TaskController extends Controller
     public function getlapangana(){
         // $booking= \App\booking::where("id",$id)
         //             ->first();
-        $booking= \App\booking::where("item_id",6)
+        $booking= \App\booking::where("item_id",3)
                         
                         ->get();
         $n=0;
@@ -55,7 +55,7 @@ class TaskController extends Controller
         return response()->json($data);
     }
     public function getlapanganb(){
-        $booking= \App\booking::where("item_id",5)
+        $booking= \App\booking::where("item_id",4)
                         ->get();
         $n=0;
         $count=count($booking);
