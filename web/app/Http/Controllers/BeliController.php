@@ -130,7 +130,7 @@ class BeliController extends Controller
 
         // insert data beli
         $beli = new beli;
-        $beli->supplier_id = 2;
+        $beli->supplier_id = $request->hiddensupplier;
         $beli->tanggal = date('Y-m-d H:i:s');
         $beli->jumlah = DB::table('tbltempdtlbeli')->sum('total');
         $beli->save();

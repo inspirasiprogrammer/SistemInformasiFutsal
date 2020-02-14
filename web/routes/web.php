@@ -58,7 +58,7 @@ Route::middleware("auth")->group(function(){
     Route::resource('jual','JualController');
     Route::resource('beli','BeliController');
     Route::get('/item/beli/{iditem}','BeliController@getbeli');
-    Route::get('beli/simpan','BeliController@simpan')->name('beli.simpan');
+    Route::post('beli/simpan','BeliController@simpan')->name('beli.simpan');
     // Route::post('/jual/banyak/{id}','JualController@editbanyak')
     //     ->name('jual.banyak');
     Route::get('/jual/hapusjual/{id}','JualController@deletejual')->name('hapus.jual');

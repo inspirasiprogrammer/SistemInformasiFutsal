@@ -113,7 +113,11 @@
                     </tfoot>
                     
                 </table>
-                <a href="{{ route("beli.simpan") }}" class="btn btn-success">Simpan</a>
+                <form action="{{ route('beli.simpan') }}" method="POST">
+                    @csrf
+                    <input type="hidden" id="hiddensupplier" name="hiddensupplier" value="6">
+                    <button class="btn btn-success" type="submit" id="tblsimpan">Simpan</button>
+                </form>
             </div>
         </div>
     </section>
@@ -135,9 +139,9 @@
                 document.getElementById("qty").disabled=false;
             });
         });
-        // function idkustomer() {
-        // document.getElementById("custid").value=Number(document.getElementById("kustomer").value);
-        // }
+        function idkustomer() {
+        document.getElementById("hiddensupplier").value=Number(document.getElementById("kustomer").value);
+        }
     function jlhbarang(){
         document.getElementById("jumlah").value=Number(document.getElementById("harga").value)*Number(document.getElementById("qty").value);
         
