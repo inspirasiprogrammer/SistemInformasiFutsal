@@ -18,15 +18,7 @@ Route::get('/', function () {
 });
 Auth::routes();
 Route::middleware("auth")->group(function(){
-    Route::get('/home', function(){
-        // if (Auth::user()->level=='a'){
-        //     $data = Sifut::paginate(10);
-        //     return view("admin.dashboard",compact("data"));
-        // }else{
-        //     return view('dashboard');
-        // }
-        return view('dashboard');
-    })->name("home");
+    Route::get('home', "LapanganController@index")->name("home");
     
     Route::get('/admin/form', function(){
         return view('admin.form');

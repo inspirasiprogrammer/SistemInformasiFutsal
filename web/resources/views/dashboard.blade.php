@@ -211,90 +211,42 @@
                                                     <h5 class="m-0 text-info float-sm-right">Rp 125.000</h5>
                                                  </div>
                                             </div>
-                                    <thead>
-                                        <tr>
-                                            <th>Jam</th>
-                                            <th>Status</th>
-                                            <th>Customer</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>08.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-warning btn-block">Pending</a></td>
-                                            <td>Deni</td>
-                                        </tr>                                    
-                                        <tr>
-                                            <td>09.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
-                                            <td></td>
-                                        </tr>                                    
-                                        <tr>
-                                            <td>10.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
-                                            <td></td>
-                                        </tr>                                    
-                                        <tr>
-                                            <td>11.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
-                                            <td></td>
-                                        </tr>                                    
-                                        <tr>
-                                            <td>12.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
-                                            <td></td>
-                                        </tr>                                    
-                                        <tr>
-                                            <td>13.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
-                                            <td></td>
-                                        </tr>                                    
-                                        <tr>
-                                            <td>14.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
-                                            <td></td>
-                                        </tr>                                    
-                                        <tr>
-                                            <td>15.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
-                                            <td></td>
-                                        </tr>                                    
-                                        <tr>
-                                            <td>16.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
-                                            <td></td>
-                                        </tr>                                    
-                                        <tr>
-                                            <td>17.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
-                                            <td></td>
-                                        </tr>                                    
-                                        <tr>
-                                            <td>18.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
-                                            <td></td>
-                                        </tr>                                    
-                                        <tr>
-                                            <td>19.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
-                                            <td></td>
-                                        </tr>                                    
-                                        <tr>
-                                            <td>20.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
-                                            <td></td>
-                                        </tr>                                    
-                                        <tr>
-                                            <td>21.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
-                                            <td></td>
-                                        </tr>                                    
-                                        <tr>
-                                            <td>22.00</td>
-                                            <td><a href="{{route("sewa")}}" class="btn btn-primary btn-block">Kosong</a></td>
-                                            <td></td>
-                                        </tr>                                    
-                                    </tbody>
+                                            <thead>
+                                                <tr>
+                                                    <td>Sesi</td>
+                                                    <td>Status</td>
+                                                    <td>Customer</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($data as $item)
+                                                    <tr>
+                                                        <td>{{ $item['sesi']}}</td>
+                                                        <td>
+                                                            @if ($item['status']=='k')
+                                                        <a href='{{route("sewa")}}' class='btn btn-primary btn-block'>Kosong</a>
+                                                            @elseif ($item['status']=='p')
+                                                            <a href='{{route("sewa")}}' class='btn btn-pending btn-block'>Pending</a>
+                                                            @else
+                                                            <a href='{{route("sewa")}}' class='btn btn-success btn-block'>Booked</a>
+                                                            @endif
+                                                        </td>
+                                                        {{-- <td>{{ $item['status']=='k'
+                                                            ?<a href='' class='btn btn-primary btn-block'>Kosong</a>
+                                                            :($item['status']=='p'
+                                                            ?"Pending"
+                                                            :"Booked")}}</td> --}}
+                                                        <td>{{ $item['user']}}</td>
+                                                    </tr>
+                                                @endforeach
+                                                {{-- @foreach ($booking as $item)
+                                                    <tr>
+                                                        <td>{{ $item->sesi}}</td>
+                                                        <td>{{ $item->status}}</td>
+                                                        <td>{{ $item->nama_user}}</td>
+                                                    </tr>
+                                                @endforeach --}}
+                                            </tbody>
                                     <tfoot>
                                     </tfoot>
                                 </table>
