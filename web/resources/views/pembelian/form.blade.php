@@ -28,9 +28,9 @@
                     </div>
                     <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:10px;">
                         <div class="float-left">
-                            <select class="select2" data-placeholder="Nama Kustomer" style="width: 100%;"  id="kustomer" name="kustomer" onchange="idkustomer()">
+                            <select class="select2" data-placeholder="Nama Supplier" style="width: 100%;"  id="kustomer" name="kustomer" onchange="idkustomer()">
                                 @foreach ($supplier as $item)
-                                        <option value="{{ $item->id }}" >
+                                        <option value="{{ $item->id }}" {{ $nama==$item->id?"selected":"" }}>
                                         {{ $item->nama }}</option>
                                 @endforeach
                             </select>
@@ -82,7 +82,7 @@
                                  
                         <form action="{{ route('beli.store') }}" method="POST" autocomplete="off">
                             @csrf
-                        <td><input type="hidden" id="supid" name="supid" value="6">
+                        <td><input type="hidden" id="supid" name="supid" value={{ $nama }}>
                                 <input type="text" class="form-control " name="idbarang" style="pointer-events: none;" id="idbarang"></td>
                             <td>
                                 <div class="form-group">
@@ -115,7 +115,7 @@
                 </table>
                 <form action="{{ route('beli.simpan') }}" method="POST">
                     @csrf
-                    <input type="hidden" id="hiddensupplier" name="hiddensupplier" value="6">
+                    <input type="hidden" id="hiddensupplier" name="hiddensupplier" value={{ $nama }}>
                     <button class="btn btn-success" type="submit" id="tblsimpan">Simpan</button>
                 </form>
             </div>
@@ -141,6 +141,7 @@
         });
         function idkustomer() {
         document.getElementById("hiddensupplier").value=Number(document.getElementById("kustomer").value);
+        document.getElementById("supid").value=Number(document.getElementById("kustomer").value);
         }
     function jlhbarang(){
         document.getElementById("jumlah").value=Number(document.getElementById("harga").value)*Number(document.getElementById("qty").value);

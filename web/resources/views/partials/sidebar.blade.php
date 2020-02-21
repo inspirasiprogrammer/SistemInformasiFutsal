@@ -42,7 +42,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('beli.list') }}" class="nav-link">
+                            <a href="{{ route('beli.index') }}" class="nav-link">
                                 <i class="fas fa-coins nav-icon"></i>
                                 <p>Pembelian</p>
                             </a>
@@ -82,14 +82,41 @@
                     </a>
                 </li>
                 @if (Auth::user()->level=='a')
-                <li class="nav-item">
-                        <a href="{{ route('laporan.tahunan') }}" class="nav-link">
-                            <i class="nav-icon fas fa-clipboard-list"></i>
-                            <p>
-                                Laporan
-                            </p>
-                        </a>
-                    </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-clipboard-list"></i>
+                        <p>
+                            Laporan
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('report.semua') }}" class="nav-link">
+                                <i class="fas fa-cash-register nav-icon"></i>
+                                <p>Penjualan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('report.item') }}" class="nav-link">
+                                <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p>Penjualan Item</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('report.semuabeli') }}" class="nav-link">
+                                <i class="fas fa-cash-register nav-icon"></i>
+                                <p>Pembelian</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('report.itembeli') }}" class="nav-link">
+                                <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p>Pembelian Item</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 @endif
                 
             </ul>

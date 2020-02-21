@@ -35,10 +35,11 @@ class BeliController extends Controller
         Tempdtlbeli::truncate();
        
         $row=1;
+        $nama=1;
         $barang=Item::all();
         $supplier= Supplier::all();
         $jumlah = DB::table('tbltempdtlbeli')->sum('total');
-        return view("pembelian.form",compact("barang","row","supplier","jumlah"));
+        return view("pembelian.form",compact("barang","row","supplier","jumlah","nama"));
         
     }
 
@@ -60,11 +61,12 @@ class BeliController extends Controller
         $dtlbeli->save();
 
         $row=1;
+        $nama=$request->supid;
         $data = Tempdtlbeli::all();
         $barang=Item::all();
         $supplier= Supplier::all();
         $jumlah = DB::table('tbltempdtlbeli')->sum('total');
-        return view("pembelian.form",compact("barang","row","data","supplier","jumlah"));
+        return view("pembelian.form",compact("barang","row","data","supplier","jumlah","nama"));
     }
 
     /**
@@ -117,7 +119,7 @@ class BeliController extends Controller
         $beli = Tempbeli::find(1);
         $barang=Item::all();
         $supplier=Supllier::all();
-        return view("penbelian.detail",compact("barang","row","beli","supplier","data"));
+        return view("pembelian.form",compact("barang","row","beli","supplier","data"));
     }
     
     public function getbeli($itemid){
@@ -150,7 +152,7 @@ class BeliController extends Controller
         
     }
     public function deletebeli($id){
-        DB::table('tbldetailbeli')->where('beli_id', $id)->delete();
+        DB::table('tbldtlbeli')->where('beli_id', $id)->delete();
         Beli::destroy($id);
         return redirect()->route('beli.index');
     }

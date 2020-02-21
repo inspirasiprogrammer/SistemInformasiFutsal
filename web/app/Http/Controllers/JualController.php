@@ -37,7 +37,7 @@ class JualController extends Controller
     {
         //
         DB::table('tbltempjual')->where('id',1)->update([
-            'jumlah'=>0,'user_id'=>6]);
+            'jumlah'=>0]);
         Tempdtljual::truncate();
         $row=1;
         $jual = Tempjual::find(1);

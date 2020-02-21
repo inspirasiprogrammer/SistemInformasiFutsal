@@ -45,6 +45,8 @@
                                         Manajer</option>
                                         <option value="k" >
                                         Kasir</option>
+                                        <option value="c" >
+                                        Customer</option>
                                     </select>
                                 </div>
                                 @endif

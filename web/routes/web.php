@@ -57,6 +57,7 @@ Route::middleware("auth")->group(function(){
     Route::resource('item','ItemController');
     Route::resource('jual','JualController');
     Route::resource('beli','BeliController');
+    Route::get('/beli/hapusbeli/{id}','BeliController@deletebeli')->name('hapus.beli');
     Route::get('/item/beli/{iditem}','BeliController@getbeli');
     Route::post('beli/simpan','BeliController@simpan')->name('beli.simpan');
     // Route::post('/jual/banyak/{id}','JualController@editbanyak')
@@ -74,21 +75,14 @@ Route::middleware("auth")->group(function(){
     Route::resource('user','UserController');
     route::get('user/simpan','UserController@simpan')->name('user.simpan');
     
-    Route::get('/laporan/tahunan', function(){
-        return view('admin.laporan.tahunan');
-    })->name("laporan.tahunan");
-    Route::get('/laporan/bulanan', function(){
-        return view('admin.laporan.bulanan');
-    })->name("laporan.bulanan");
-    Route::get('/laporan/harian', function(){
-        return view('admin.laporan.harian');
-    })->name("laporan.harian");
-    Route::get('/laporan/jam', function(){
-        return view('admin.laporan.jam');
-    })->name("laporan.jam");
-    Route::get('/laporan/detail', function(){
-        return view('admin.laporan.detail');
-    })->name("laporan.detail");
+    Route::get('laporan/semua',"ReportController@semuareport")
+        ->name("report.semua");
+    Route::get('laporan/item',"ReportController@itemreport")
+        ->name("report.item");
+    Route::get('laporan/semuabeli',"ReportController@semuabelireport")
+        ->name("report.semuabeli");
+        Route::get('laporan/itembeli',"ReportController@itembelireport")
+        ->name("report.itembeli");
 });
 Route::get("/register",function(){
     return view('register');

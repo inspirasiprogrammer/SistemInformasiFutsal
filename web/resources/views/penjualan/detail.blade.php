@@ -102,7 +102,7 @@
                         
                                     <form action="{{ route('jual.store') }}" method="POST" autocomplete="off">
                                         @csrf
-                                    <td><input type="hidden" id="custid" name="custid" value="6">
+                                    <td><input type="hidden" id="custid" name="custid" value="{{ $jual->user_id }}">
                                             <input type="text" class="form-control " name="idbarang" style="pointer-events: none;" id="idbarang"></td>
                                         <td>
                                             <div class="form-group">
